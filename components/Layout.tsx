@@ -15,7 +15,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header className="fixed top-0 -inset-x-0 bg-blue-600">
-      <div className="max-w-screen-sm mx-auto px-2">
+      <div className="container-sm mx-auto px-2">
         <div className="items-center flex justify-between p-4 border-b-1">
           <a className="text-white text-base">
           LOGO
@@ -32,14 +32,6 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       </div>
     </header>
     <main>{children}</main>
-    {/* <footer class="pt-10 pb-8 bg-gray-50">
-      <div class="flex flex-wrap justify-center px-4 ">
-        <a href="#" class="mx-4">利用規約</a>
-        <a href="#" class="mx-4">プライバシーポリシー</a>
-        <a href="#" class="mx-4">お問合せ</a>
-      </div>
-      <p class="text-center m-4">©️E-LOVE</p>
-    </footer> */}
   </div>
 )
 
