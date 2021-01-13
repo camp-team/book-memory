@@ -32,6 +32,14 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       </div>
     </header>
     <main>{children}</main>
+    <footer className="pt-10 pb-8 bg-gray-50">
+      <div className="flex flex-wrap justify-center px-4 ">
+        <a href="#" className="mx-4">利用規約</a>
+        <a href="#" className="mx-4">プライバシーポリシー</a>
+        <a href="#" className="mx-4">お問合せ</a>
+      </div>
+      <p className="text-center m-4">©️E-LOVE</p>
+    </footer>
   </div>
 )
 
