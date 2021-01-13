@@ -14,27 +14,24 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
+    <header className="fixed top-0 -inset-x-0 bg-blue-600">
+      <div className="container-sm mx-auto px-2">
+        <div className="items-center flex justify-between p-4 border-b-1">
+          <a className="text-white text-base">
+          LOGO
+          </a>
+          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="#" className="ml-3 whitespace-nowrap inline-flex items-center justify-center px-2 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500">
+              本を検索する
+            </a>
+            <a href="#" className="ml-3 whitespace-nowrap inline-flex items-center justify-center px-2 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500">
+              ログイン
+            </a>
+          </nav>
+        </div>
+      </div>
     </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
+    <main>{children}</main>
   </div>
 )
 
