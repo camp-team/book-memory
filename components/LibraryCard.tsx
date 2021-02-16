@@ -7,7 +7,7 @@ type Props = {
   title: string;
 };
 
-const textMemorys = [
+const textMemories = [
   {
     id: 0,
     texts: [],
@@ -48,7 +48,7 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => (
     </div>
     <form className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
       <ul className='border border-gray-200 rounded-md divide-y divide-gray-200'>
-        {textMemorys.map(
+        {textMemories.map(
           (textMemory) =>
             bid === textMemory.id && (
               <div key={textMemory.id}>
