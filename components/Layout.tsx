@@ -9,8 +9,13 @@ type Props = {
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => {
   const [searchBarVisible, setSearchBarVisible] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const onClickSearchBarVisible = () => {
     setSearchBarVisible(!searchBarVisible);
+  };
+  const onClickLogin = () => {
+    setIsLogin(true);
+    console.log(isLogin);
   };
 
   return (
@@ -20,17 +25,17 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 flex justify-between items-center md:space-x-2'>
+      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2'>
         <a className='text-white text-base'>LOGO</a>
-        <div className='items-center hidden w-full sm:flex'>
+        <div className='items-center hidden w-1/2 sm:flex'>
           <input
             type='text'
-            className='ml-3 md:w-11/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none'
+            className='md:w-11/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none'
             placeholder='本のタイトルを入力'
           />
           <a
             href='#'
-            className='inline-flex items-center justify-center px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
+            className='inline-flex px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
           >
             <img src='/images/search.svg' alt='' className='w-5 rounded-md' />
           </a>
@@ -43,12 +48,23 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           >
             <img src='/images/search.svg' alt='' className='w-5' />
           </a>
-          <a
-            href='#'
-            className='ml-2 whitespace-nowrap inline-flex items-center justify-center px-2 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
-          >
-            ログイン
-          </a>
+          {isLogin ? (
+            <a href='#'>
+              <img
+                src='https://picsum.photos/100/100'
+                alt='Some image'
+                className='ml-4 rounded-full h-9 w-9 flex items-center justify-center'
+              />
+            </a>
+          ) : (
+            <a
+              href='#'
+              className='ml-4 p-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
+              onClick={onClickLogin}
+            >
+              ログイン
+            </a>
+          )}
         </div>
       </header>
 
