@@ -1,21 +1,20 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useContext } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { AuthContext } from '../pages/_app';
+import LoginDialogButton from '../components/LoginDialogButton';
 
 type Props = {
   children?: ReactNode;
   title?: string;
 };
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => {
+const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
+  const currentUser = useContext(AuthContext).currentUser;
   const [searchBarVisible, setSearchBarVisible] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+
   const onClickSearchBarVisible = () => {
     setSearchBarVisible(!searchBarVisible);
-  };
-  const onClickLogin = () => {
-    setIsLogin(true);
-    console.log(isLogin);
   };
 
   return (
@@ -27,7 +26,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
       </Head>
       <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2'>
         <a className='text-white text-base'>LOGO</a>
-        <div className='items-center hidden w-1/2 sm:flex'>
+        <div className='ml-4 items-center hidden w-1/2 sm:flex'>
           <input
             type='text'
             className='md:w-11/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none'
@@ -48,21 +47,25 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           >
             <img src='/images/search.svg' alt='' className='w-5' />
           </a>
-          {isLogin ? (
+          {!currentUser ? (
+            currentUser === null ? (
+              //未ログインのパターン（ログインボタン表示）
+              <LoginDialogButton stylecss='ml-4 p-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'>
+                ログイン
+              </LoginDialogButton>
+            ) : (
+              //ログイン情報取得中のパターン（つまりcurrentUserがundefiendの状態）
+              //※Googleアイコン描写時に検索欄が動かないようにするためのダミー
+              <div className='ml-4 rounded-full h-9 w-9'></div>
+            )
+          ) : (
+            //ログイン情報取得済のパターン（アイコン表示）
             <a href='#'>
               <img
-                src='https://picsum.photos/100/100'
+                src={currentUser?.photoURL || 'https://picsum.photos/100/100'}
                 alt='Some image'
                 className='ml-4 rounded-full h-9 w-9 flex items-center justify-center'
               />
-            </a>
-          ) : (
-            <a
-              href='#'
-              className='ml-4 p-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
-              onClick={onClickLogin}
-            >
-              ログイン
             </a>
           )}
         </div>
