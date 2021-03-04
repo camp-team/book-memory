@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { AuthContext } from '../pages/_app';
 import LoginDialogButton from '../components/LoginDialogButton';
+import MenuVar from '../components/MenuVar';
 
 type Props = {
   children?: ReactNode;
@@ -24,7 +25,7 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2'>
+      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-50'>
         <a className='text-white text-base'>LOGO</a>
         <div className='ml-4 items-center hidden w-1/2 sm:flex'>
           <input
@@ -60,13 +61,7 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
             )
           ) : (
             //ログイン情報取得済のパターン（アイコン表示）
-            <a href='#'>
-              <img
-                src={currentUser?.photoURL || 'https://picsum.photos/100/100'}
-                alt='Some image'
-                className='ml-4 rounded-full h-9 w-9 flex items-center justify-center'
-              />
-            </a>
+            <MenuVar />
           )}
         </div>
       </header>
@@ -97,11 +92,15 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
         </div>
       )}
 
-      <main>{children}</main>
+      <main className='container mx-auto px-16'>{children}</main>
       <footer className='pt-10 pb-8 bg-gray-50'>
         <div className='flex flex-wrap justify-center space-x-4'>
-          <a href='#'>利用規約</a>
-          <a href='#'>プライバシーポリシー</a>
+          <Link href='/terms'>
+            <a>利用規約</a>
+          </Link>
+          <Link href='/privacypolicy'>
+            <a>プライバシーポリシー</a>
+          </Link>
           <a href='#'>お問合せ</a>
         </div>
         <p className='text-center m-4'>©️E-LOVE</p>
