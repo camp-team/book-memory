@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import LibraryMemory from '../components/LibraryMemory';
 import MoreVar from '../components/MoreVer';
+import { createMemory, useMemory } from '../utils/memory';
 
 type Props = {
-  bid: number;
+  bid: string;
   imgUrl: string;
   title: string;
   texts: string[];
@@ -11,23 +12,20 @@ type Props = {
 
 const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
   const onBookDelete = () => {};
+  const memories = useMemory(bid);
+  //入力メモリーのステイト
   const [input, setInput] = useState('');
-  const [memories, setMemory] = useState(texts);
+  //メモリー入力中関数
   const onChangeInput: any = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
-    console.log(typeof event.target);
   };
-  //記録追加関数
+  //メモリー追加関数
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
-    const newText = [...memories, input];
-    setMemory(newText);
+    const newMemories: any = [...memories, input];
+    createMemory(bid, newMemories);
     setInput('');
   };
-
-  useEffect(() => {
-    console.log(memories);
-  });
 
   return (
     <div className='p-1 flex flex-col bg-blue-100 rounded w-full shadow hover:shadow-md duration-4'>
