@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LibraryMemory from '../components/LibraryMemory';
-import MoreVar from '../components/MoreVer';
-import { createMemory, useMemory } from '../utils/memory';
+import MoreVar from './MoreVar';
+import { newMemory, useMemory } from '../utils/memory';
 
 type Props = {
   bid: string;
@@ -11,7 +11,12 @@ type Props = {
 };
 
 const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
-  const onBookDelete = () => {};
+  const actions = [
+    {
+      label: 'ライブラリ削除',
+      function: () => {},
+    },
+  ];
   const memories = useMemory(bid);
   //入力メモリーのステイト
   const [input, setInput] = useState('');
@@ -23,7 +28,7 @@ const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
     const newMemories: any = [...memories, input];
-    createMemory(bid, newMemories);
+    newMemory(bid, newMemories);
     setInput('');
   };
 
@@ -37,15 +42,13 @@ const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
         />
         <p className='p-2 font-semibold text-sm text-center'>{title}</p>
         <div className='ml-2 absolute top-0 right-0'>
-          <MoreVar
-            onFunctions={[onBookDelete]}
-            children={['ライブラリから削除']}
-          />
+          <MoreVar actions={actions} />
         </div>
       </div>
       <form className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
         <ul className='border border-gray-200 rounded-md divide-y divide-gray-200'>
           <LibraryMemory
+            bid={bid}
             input={input}
             onChange={onChangeInput}
             onClick={onClickMemoryAdd}
