@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import LibraryMemory from '../components/LibraryMemory';
 import MoreVar from './MoreVar';
-import { newMemory, useMemory } from '../utils/memory';
+import { addMemory, useMemory } from '../utils/memory';
 
 type Props = {
   bid: string;
@@ -21,14 +21,14 @@ const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
   //入力メモリーのステイト
   const [input, setInput] = useState('');
   //メモリー入力中関数
-  const onChangeInput: any = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput: any = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
   //メモリー追加関数
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
-    const newMemories: any = [...memories, input];
-    newMemory(bid, newMemories);
+    memories.push(input);
+    addMemory(bid, memories);
     setInput('');
   };
 

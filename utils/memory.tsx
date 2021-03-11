@@ -20,7 +20,7 @@ export const useMemory = (id: string) => {
 
 //メモリー作成（追加、編集、削除、全てこの関数で行う）
 //配列丸ごと更新させる
-export const newMemory = (id: string, newMemories: string) => {
+export const addMemory = (id: string, newMemories: string) => {
   return firebase.firestore().doc(`books/${id}`).update({
     memories: newMemories,
   });
