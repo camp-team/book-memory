@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import LibraryMemory from '../components/LibraryMemory';
 import MoreVar from './MoreVar';
 import { addMemory, useMemory } from '../utils/memory';
@@ -7,10 +7,9 @@ type Props = {
   bid: string;
   imgUrl: string;
   title: string;
-  texts: string[];
 };
 
-const LibraryCard = ({ bid, imgUrl, title, texts }: Props) => {
+const LibraryCard = ({ bid, imgUrl, title }: Props) => {
   const actions = [
     {
       label: 'ライブラリ削除',
