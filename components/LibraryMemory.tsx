@@ -1,18 +1,16 @@
 import React from 'react';
-import MoreVar from '../components/MoreVer';
+import MemoryMoreVart from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 type Props = {
+  bid: string;
   input: string;
   onChange: VoidFunction;
   onClick: VoidFunction;
   memories?: string[];
 };
 
-const LibraryMemory = ({ input, onChange, onClick, memories }: Props) => {
-  const onMemoryEdit = () => {};
-  const onMemoryDelete = () => {};
-
+const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
   return (
     <>
       {memories &&
@@ -26,10 +24,7 @@ const LibraryMemory = ({ input, onChange, onClick, memories }: Props) => {
                 {memory}
               </p>
 
-              <MoreVar
-                onFunctions={[onMemoryEdit, onMemoryDelete]}
-                children={['編集', '削除']}
-              />
+              <MemoryMoreVart bid={bid} memoryIndex={index} memory={memory} />
             </div>
           </li>
         ))}

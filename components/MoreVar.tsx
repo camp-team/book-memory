@@ -5,11 +5,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 type Props = {
-  onFunctions: VoidFunction[];
-  children: string[];
+  actions: {
+    label: string;
+    function: VoidFunction;
+  }[];
 };
 
-const MoreVer = ({ onFunctions, children }: Props) => {
+const MoreVer = ({ actions }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -36,10 +38,10 @@ const MoreVer = ({ onFunctions, children }: Props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {onFunctions &&
-          onFunctions.map((onFunction, idx) => (
+        {actions &&
+          actions.map((action, idx) => (
             <div key={idx}>
-              <MenuItem onClick={onFunction}>{children[idx]}</MenuItem>
+              <MenuItem onClick={action.function}>{action.label}</MenuItem>
             </div>
           ))}
       </Menu>
