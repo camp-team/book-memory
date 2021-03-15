@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,12 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import { useMemory, addMemory } from '../utils/memory';
+import { addMemory } from '../utils/memory';
 
 type Props = {
   bid: string;
   memoryIndex: number;
-  memory: string;
+  memories?: string[];
 };
 
 const useStyles = makeStyles({
@@ -22,8 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MemoryMoreVert = ({ bid, memoryIndex, memory }: Props) => {
-  const memories = useMemory(bid);
+const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -33,7 +32,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memory }: Props) => {
   };
   const onClickEditMemory = () => {};
   const onClickDeleteMemory = (index: number) => {
-    memories.splice(index, 1);
+    memories?.splice(index, 1);
     addMemory(bid, memories);
     handleClose();
   };

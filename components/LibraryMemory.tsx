@@ -24,7 +24,11 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
                 {memory}
               </p>
 
-              <MemoryMoreVart bid={bid} memoryIndex={index} memory={memory} />
+              <MemoryMoreVart
+                bid={bid}
+                memoryIndex={index}
+                memories={memories}
+              />
             </div>
           </li>
         ))}
