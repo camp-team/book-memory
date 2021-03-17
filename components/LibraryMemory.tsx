@@ -27,7 +27,7 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
               <MemoryMoreVart
                 bid={bid}
                 memoryIndex={index}
-                memories={memories}
+                memories={memories && memories}
               />
             </div>
           </li>
