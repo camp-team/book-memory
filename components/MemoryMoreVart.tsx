@@ -29,7 +29,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   const onClickMoreVart = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const MoreVartClose = () => {
+  const closeMoreVart = () => {
     setAnchorEl(null);
   };
   // ーーー編集ダイアログ用ーーー //
@@ -42,7 +42,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   // 編集ダイアログ開く
   const onClickEditDialogOpen = () => {
     setEditDialogOpen(true);
-    MoreVartClose();
+    closeMoreVart();
   };
   // 編集ダイアログの入力ステート
   const [editInput, setEditInput] = useState(memories[memoryIndex]);
@@ -63,7 +63,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   const onClickDeleteMemory = (index: number) => {
     memories.splice(index, 1);
     addMemory(bid, memories);
-    MoreVartClose();
+    closeMoreVart();
   };
   const classes = useStyles();
   return (
@@ -83,7 +83,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={MoreVartClose}
+        onClose={closeMoreVart}
       >
         <MenuItem onClick={() => onClickEditDialogOpen()}>
           <ListItemIcon classes={classes}>
@@ -104,7 +104,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
           open={editDialogopen}
           onClickEditMemory={onClickEditMemory}
           onChangeEditMemory={onChangeEditMemory}
-          handleClose={onClickDialogClose}
+          closeHandle={onClickDialogClose}
           editInput={editInput}
           memoryIndex={memoryIndex}
         />

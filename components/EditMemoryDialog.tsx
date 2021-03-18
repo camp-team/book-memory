@@ -8,7 +8,7 @@ type Props = {
   open: boolean;
   onClickEditMemory: any;
   onChangeEditMemory: any;
-  handleClose: VoidFunction;
+  closeHandle: VoidFunction;
   memoryIndex: number;
   editInput: string;
 };
@@ -17,7 +17,7 @@ const EditMemoryDialog = ({
   open,
   onClickEditMemory,
   onChangeEditMemory,
-  handleClose,
+  closeHandle,
   editInput,
   memoryIndex,
 }: Props) => {
@@ -25,7 +25,7 @@ const EditMemoryDialog = ({
     <div>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={closeHandle}
         aria-labelledby='form-dialog-title'
         maxWidth='lg'
         scroll='body'
@@ -46,7 +46,7 @@ const EditMemoryDialog = ({
         </DialogContent>
         <DialogActions>
           <button
-            onClick={handleClose}
+            onClick={closeHandle}
             className='bg-gray-200 p-2 mr-1 rounded-md '
           >
             キャンセル
