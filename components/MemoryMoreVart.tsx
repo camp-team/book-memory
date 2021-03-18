@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,11 +9,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { addMemory } from '../utils/memory';
+import EditMemoryDialog from './EditMemoryDialog';
 
 type Props = {
   bid: string;
   memoryIndex: number;
-  memories?: string[];
+  memories: string[];
 };
 
 const useStyles = makeStyles({
@@ -23,18 +24,46 @@ const useStyles = makeStyles({
 });
 
 const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
+  //　ーーーMoreVart用ーーー　//
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const onClickMoreVart = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const closeMoreVart = () => {
     setAnchorEl(null);
   };
-  const onClickEditMemory = () => {};
-  const onClickDeleteMemory = (index: number) => {
-    memories?.splice(index, 1);
+  // ーーー編集ダイアログ用ーーー //
+  const [editDialogopen, setEditDialogOpen] = useState(false);
+  // 編集ダイアログ閉じる
+  const onClickDialogClose = () => {
+    setEditInput(memories[memoryIndex]);
+    setEditDialogOpen(false);
+  };
+  // 編集ダイアログ開く
+  const onClickEditDialogOpen = () => {
+    setEditDialogOpen(true);
+    closeMoreVart();
+  };
+  // 編集ダイアログの入力ステート
+  const [editInput, setEditInput] = useState(memories[memoryIndex]);
+  // 編集ダイアログのメモリー入力中関数
+  const onChangeEditMemory: any = (event: ChangeEvent<HTMLInputElement>) => {
+    setEditInput(event.target.value);
+  };
+  // メモリー更新関数
+  const onClickEditMemory = (index: number) => {
+    if (editInput === '') return;
+    memories[index] = editInput;
     addMemory(bid, memories);
-    handleClose();
+    setEditInput(memories[memoryIndex]);
+    setEditDialogOpen(false);
+  };
+
+  // メモリー削除関数
+  const onClickDeleteMemory = (index: number) => {
+    memories.splice(index, 1);
+    addMemory(bid, memories);
+    closeMoreVart();
   };
   const classes = useStyles();
   return (
@@ -43,7 +72,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
         aria-label='more'
         aria-controls='simple-menu'
         aria-haspopup='true'
-        onClick={handleClick}
+        onClick={onClickMoreVart}
         className='opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none'
         style={{ padding: 0 }}
       >
@@ -54,9 +83,9 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
+        onClose={closeMoreVart}
       >
-        <MenuItem onClick={onClickEditMemory}>
+        <MenuItem onClick={() => onClickEditDialogOpen()}>
           <ListItemIcon classes={classes}>
             <EditOutlinedIcon fontSize='small' />
           </ListItemIcon>
@@ -69,6 +98,17 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
           <Typography variant='inherit'>削除</Typography>
         </MenuItem>
       </Menu>
+
+      {editDialogopen && (
+        <EditMemoryDialog
+          open={editDialogopen}
+          onClickEditMemory={onClickEditMemory}
+          onChangeEditMemory={onChangeEditMemory}
+          closeHandle={onClickDialogClose}
+          editInput={editInput}
+          memoryIndex={memoryIndex}
+        />
+      )}
     </div>
   );
 };
