@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import BookCard from '../components/BookCard';
-import { books } from '../utils/SearchBooks';
+import { books } from '../utils/search-books';
 
 export default function Search() {
   return (
