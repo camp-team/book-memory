@@ -1,18 +1,20 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
   buttoncolor: string;
+  onClick: any;
 };
 
-const BookCardButton = ({ children, buttoncolor }: Props) => (
-  <div className="flex flex-col">
+const BookCardButton = ({ children, buttoncolor, onClick }: Props) => (
+  <div className='flex flex-col'>
     <button
       className={
-        "bg-" +
+        'bg-' +
         `${buttoncolor}` +
-        "-400 text-white font-bold p-2 text-xs shadow rounded"
+        '-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
       }
+      onClick={onClick}
     >
       {children}
     </button>
