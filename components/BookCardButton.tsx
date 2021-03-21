@@ -2,17 +2,16 @@ import React, { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  buttoncolor: string;
   onClick: any;
 };
 
-const BookCardButton = ({ children, buttoncolor, onClick }: Props) => (
+const BookCardButton = ({ children, onClick }: Props) => (
   <div className='flex flex-col'>
     <button
       className={
-        'bg-' +
-        `${buttoncolor}` +
-        '-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
+        children === 'Amazon詳細'
+          ? 'bg-yellow-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
+          : 'bg-blue-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
       }
       onClick={onClick}
     >
