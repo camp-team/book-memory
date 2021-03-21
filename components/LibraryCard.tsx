@@ -1,7 +1,9 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import LibraryMemory from '../components/LibraryMemory';
 import MoreVar from './MoreVar';
 import { addMemory, useMemory } from '../utils/memory';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 type Props = {
   bid: string;
@@ -9,7 +11,19 @@ type Props = {
   title: string;
 };
 
+// Snacbar表示用↓
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
+
 const LibraryCard = ({ bid, imgUrl, title }: Props) => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const closeSnackbar = (event?: SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
   const actions = [
     {
       label: 'ライブラリ削除',
@@ -23,6 +37,13 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
   const onChangeInput: any = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
+
+  //メモリーの上限(1000文字)監視フック
+  useEffect(() => {
+    if (input.length > 1000) {
+      setOpenSnackbar(true);
+    }
+  }, [input.length]);
   //メモリー追加関数
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
@@ -55,6 +76,16 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
           />
         </ul>
       </form>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={closeSnackbar}
+      >
+        <Alert severity='error'>
+          １レコードの上限(1000文字)をオーバーしました
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
