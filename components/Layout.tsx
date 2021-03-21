@@ -92,7 +92,7 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
         </div>
       )}
 
-      <main className='container mx-auto px-16'>{children}</main>
+      <main>{children}</main>
       <footer className='pt-10 pb-8 bg-gray-50'>
         <div className='flex flex-wrap justify-center space-x-4'>
           <Link href='/terms'>

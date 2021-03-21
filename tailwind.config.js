@@ -8,5 +8,5 @@ module.exports = {
     opacity: ['group-hover'],
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [require('@tailwindcss/line-clamp')],
+};
