@@ -43,7 +43,7 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
     if (input.length > 1000) {
       setOpenSnackbar(true);
     }
-  });
+  }, [input.length]);
   //メモリー追加関数
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;

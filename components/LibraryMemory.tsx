@@ -18,7 +18,7 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
     memories && memories.length >= 20
       ? setMaxMemoryFlg(true)
       : setMaxMemoryFlg(false);
-  });
+  }, [memories?.length]);
 
   return (
     <>
