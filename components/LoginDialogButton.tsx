@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Router from 'next/router';
 import LoginDialog from '../components/LoginDialog';
-import { AuthContext } from '../pages/_app';
+import { fuego } from '../utils/firebase';
 
 type Props = {
   children: string;
@@ -9,11 +9,11 @@ type Props = {
 };
 
 const LoginDialogButton = ({ children, stylecss }: Props) => {
-  const auth = useContext(AuthContext);
+  const currentUser = fuego.auth().currentUser;
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     {
-      auth.currentUser ? Router.push('/library') : setOpen(true);
+      currentUser ? Router.push('/library') : setOpen(true);
     }
   };
   const handleClose = () => {

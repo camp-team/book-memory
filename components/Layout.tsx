@@ -1,9 +1,9 @@
-import React, { ReactNode, useState, useContext } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import { AuthContext } from '../pages/_app';
 import LoginDialogButton from '../components/LoginDialogButton';
 import MenuVar from '../components/MenuVar';
+import { fuego } from '../utils/firebase';
 
 type Props = {
   children?: ReactNode;
@@ -11,13 +11,12 @@ type Props = {
 };
 
 const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
-  const currentUser = useContext(AuthContext).currentUser;
+  const currentUser = fuego.auth().currentUser;
   const [searchBarVisible, setSearchBarVisible] = useState(false);
 
   const onClickSearchBarVisible = () => {
     setSearchBarVisible(!searchBarVisible);
   };
-
   return (
     <div>
       <Head>

@@ -1,6 +1,7 @@
 import 'firebase/auth';
 import 'firebase/firestore';
 import firebase from 'firebase/app';
+import { Fuego } from '@nandorojo/swr-firestore';
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_KEY,
@@ -12,12 +13,10 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 };
 
-// initializeを複数回走らせない
-if (firebase.apps.length === 0) {
-  firebase.initializeApp(config);
-}
-
+const fuego = new Fuego(config);
 const auth = firebase.auth();
+
+//Googleログインの設定値
 const uiConfig = {
   signInFlow: 'popup',
   signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
@@ -26,4 +25,4 @@ const uiConfig = {
   },
   signInSuccessUrl: '/library',
 };
-export { auth, uiConfig };
+export { auth, uiConfig, fuego };

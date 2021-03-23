@@ -9,8 +9,8 @@ export const addBook = (
   imgUrl: string
 ) => {
   firebase.firestore().doc(`users/${uid}/books/${bid}`).set({
-    name: { name },
-    imgUrl: { imgUrl },
+    name: name,
+    imgUrl: imgUrl,
     memories: [],
   });
 };
