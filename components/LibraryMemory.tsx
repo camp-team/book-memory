@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MemoryMoreVart from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 type Props = {
   bid: string;
@@ -29,7 +30,7 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
             className='group px-4 items-center text-sm cursor-pointer'
           >
             <div className='flex p-1 bg-white border-gray-100 rounded-md'>
-              <p className='pl-3 rounded-md flex-1 bg-white whitespace-pre-line break-all'>
+              <p className='pl-2 rounded-md flex-1 bg-white whitespace-pre-line break-all'>
                 {memory}
               </p>
 
@@ -44,13 +45,14 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
       <li className='mx-4 items-center text-sm flex relative rounded-md bg-white'>
         {!maxMemoryFlg ? (
           <>
-            <textarea
-              wrap='hard'
-              value={input}
-              onChange={onChange}
+            <TextareaAutosize
+              rowsMin={2}
               placeholder='入力する'
-              className='ml-3 mr-7 p-1 rounded-md flex-1 resize-none focus:outline-none'
-            ></textarea>
+              value={input}
+              wrap='hard'
+              onChange={onChange}
+              className='ml-2 mr-6 p-1 rounded-md flex-1 resize-none focus:outline-none'
+            ></TextareaAutosize>
 
             <div className='ml-2 absolute bottom-0 right-0 '>
               <IconButton

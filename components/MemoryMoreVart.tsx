@@ -67,7 +67,7 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   };
   const classes = useStyles();
   return (
-    <div className='ml-2 flex flex-col'>
+    <div className='flex flex-col'>
       <IconButton
         aria-label='more'
         aria-controls='simple-menu'
