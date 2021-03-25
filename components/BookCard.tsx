@@ -3,8 +3,7 @@ import BookCardButton from '../components/BookCardButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { addBook } from '../utils/book';
-import { useContext } from 'react';
-import { AuthContext } from '../pages/_app';
+import { fuego } from '../utils/firebase';
 
 type Props = {
   bid: string;
@@ -17,7 +16,7 @@ function Alert(props: AlertProps) {
 }
 
 const BookCard = ({ bid, imgUrl, title }: Props) => {
-  const currentUser = useContext(AuthContext).currentUser;
+  const currentUser = fuego.auth().currentUser;
   // Snackbar表示ステイト
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const closeSnackbar = () => {

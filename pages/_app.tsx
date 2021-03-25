@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { createContext, useEffect, useState } from 'react';
-import { auth } from '../utils/firebase';
+import { auth, fuego } from '../utils/firebase';
 import 'tailwindcss/tailwind.css';
 import { User } from 'firebase';
+import { FuegoProvider } from '@nandorojo/swr-firestore';
 
 type AuthContextProps = {
   currentUser: User | null | undefined;
@@ -28,9 +29,9 @@ const MyApp = ({ Component, pageProps }: any) => {
       <Head>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
-      <AuthContext.Provider value={{ currentUser }}>
+      <FuegoProvider fuego={fuego}>
         <Component {...pageProps} />
-      </AuthContext.Provider>
+      </FuegoProvider>
     </>
   );
 };

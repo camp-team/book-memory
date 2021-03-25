@@ -6,10 +6,10 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../pages/_app';
+import { useState } from 'react';
 import Router from 'next/router';
 import { auth } from '../utils/firebase';
+import { fuego } from '../utils/firebase';
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 const MenuVar = () => {
-  const currentUser = useContext(AuthContext).currentUser;
+  const currentUser = fuego.auth().currentUser;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
