@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import Router from 'next/router';
-import { auth } from '../utils/firebase';
 import { fuego } from '../utils/firebase';
 
 const useStyles = makeStyles({
@@ -34,7 +33,7 @@ const MenuVar = () => {
   };
   const onClickLogout = () => {
     Router.push('/');
-    auth.signOut();
+    fuego.auth().signOut();
   };
 
   const classes = useStyles();

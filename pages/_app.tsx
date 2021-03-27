@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { createContext, useEffect, useState } from 'react';
-import { auth, fuego } from '../utils/firebase';
+import { fuego } from '../utils/firebase';
 import 'tailwindcss/tailwind.css';
 import { User } from 'firebase';
 import { FuegoProvider } from '@nandorojo/swr-firestore';
@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   );
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    fuego.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
   });
