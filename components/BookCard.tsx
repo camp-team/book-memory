@@ -17,20 +17,17 @@ function Alert(props: AlertProps) {
 
 const BookCard = ({ bid, imgUrl, title }: Props) => {
   const currentUser = fuego.auth().currentUser;
-  // Snackbar表示ステイト
+  // 「ライブラリ登録」Snackbar表示ステイト
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const closeSnackbar = () => {
     setOpenSnackbar(false);
   };
 
   // ライブラリ登録
-  const onClickAddLibrary = (uid: string) => {
-    addBook(uid, bid, title, imgUrl);
+  const onClickAddLibrary = () => {
+    addBook(bid, title, imgUrl);
     setOpenSnackbar(true);
   };
-
-  // Amazon詳細
-  const onClickAmazon = () => {};
 
   return (
     <div className='w-48 p-2 text-center bg-white rounded shadow hover:shadow-lg'>
@@ -43,9 +40,8 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
       </figure>
       <p className='p-2 h-16 font-bold text-sm mb-2 line-clamp-3'>{title}</p>
       <div className='flex flex-col'>
-        <BookCardButton onClick={onClickAmazon}>Amazon詳細</BookCardButton>
         {currentUser && (
-          <BookCardButton onClick={() => onClickAddLibrary(currentUser.uid)}>
+          <BookCardButton onClick={() => onClickAddLibrary()}>
             ライブラリ登録
           </BookCardButton>
         )}
