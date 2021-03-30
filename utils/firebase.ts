@@ -14,7 +14,6 @@ const config = {
 };
 
 const fuego = new Fuego(config);
-const auth = firebase.auth();
 
 //Googleログインの設定値
 const uiConfig = {
@@ -25,4 +24,4 @@ const uiConfig = {
   },
   signInSuccessUrl: '/library',
 };
-export { auth, uiConfig, fuego };
+export { uiConfig, fuego };
