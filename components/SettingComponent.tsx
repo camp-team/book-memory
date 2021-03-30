@@ -32,7 +32,7 @@ const SettingComponent = ({ title, contents }: Props) => {
       {onClickDialogClose && (
         <DeleteUserDialog
           open={deleteUserDialogopen}
-          closeHandle={onClickDialogClose}
+          handelClick={onClickDialogClose}
         ></DeleteUserDialog>
       )}
     </div>

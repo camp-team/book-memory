@@ -5,34 +5,28 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { fuego } from '../utils/firebase';
-import { deleteDocument, useCollection } from '@nandorojo/swr-firestore';
 import Router from 'next/router';
 
 type Props = {
   open: boolean;
-  closeHandle: VoidFunction;
+  handelClick: VoidFunction;
 };
 
-export default function DeleteUserDialog({ open, closeHandle }: Props) {
+export default function DeleteUserDialog({ open, handelClick }: Props) {
   const currentUser = fuego.auth().currentUser;
-  const { data } = useCollection(`users/${currentUser?.uid}/books`);
 
   // 退会処理
-  const onClickDeleteUser = (uid: string) => {
-    data?.map((userBook) => {
-      deleteDocument(`users/${uid}/books/${userBook.id}`);
-    });
-    deleteDocument(`users/${uid}`);
-    closeHandle();
-    Router.push('/');
-    fuego.auth().signOut();
-    fuego.auth().currentUser?.delete();
+  const onClickDeleteUser = async () => {
+    handelClick();
+    await Router.push('/');
+    await fuego.auth().currentUser?.delete();
+    await fuego.auth().signOut();
   };
   return (
     <div>
       <Dialog
         open={open}
-        onClose={closeHandle}
+        onClose={handelClick}
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
@@ -46,14 +40,14 @@ export default function DeleteUserDialog({ open, closeHandle }: Props) {
         </DialogContent>
         <DialogActions>
           <button
-            onClick={closeHandle}
+            onClick={handelClick}
             className='bg-gray-200 p-2 mr-1 rounded-md focus:outline-none '
           >
             キャンセル
           </button>
           <button
             onClick={() => {
-              currentUser && onClickDeleteUser(currentUser.uid);
+              currentUser && onClickDeleteUser();
             }}
             className='bg-red-500 text-white p-2 mr-1 rounded-md '
           >
