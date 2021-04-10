@@ -30,7 +30,7 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
   };
 
   return (
-    <div className='w-48 p-2 text-center bg-white rounded shadow hover:shadow-lg'>
+    <div className='w-44 md:w-48 mx-auto p-2 text-center bg-blue-50 rounded-md shadow hover:shadow-lg'>
       <figure className='h-36 grid justify-center align-center'>
         <img
           src={imgUrl}

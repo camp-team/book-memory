@@ -1,22 +1,37 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, ChangeEvent } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import LoginDialogButton from '../components/LoginDialogButton';
 import MenuVar from '../components/MenuVar';
-import { fuego } from '../utils/firebase';
+import { useRouter } from 'next/router';
+import { fuego } from '@nandorojo/swr-firestore';
 
 type Props = {
   children?: ReactNode;
   title?: string;
 };
 
-const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
+export const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
+  const router = useRouter();
   const currentUser = fuego.auth().currentUser;
   const [searchBarVisible, setSearchBarVisible] = useState(false);
-
+  const [searchInput, setSearchInput] = useState('');
+  //メモリー入力中関数
+  const onChangeSearchInput: any = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
   const onClickSearchBarVisible = () => {
     setSearchBarVisible(!searchBarVisible);
   };
+
+  const onClickSearchBook = (input: string) => {
+    if (input === '') return;
+    router.push({
+      pathname: '/search',
+      query: { booktitle: input },
+    });
+  };
+
   return (
     <div>
       <Head>
@@ -29,11 +44,16 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
         <div className='ml-4 items-center hidden w-1/2 sm:flex'>
           <input
             type='text'
+            value={searchInput}
+            onChange={onChangeSearchInput}
             className='md:w-11/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none'
             placeholder='本のタイトルを入力'
           />
           <a
             href='#'
+            onClick={() => {
+              onClickSearchBook(searchInput);
+            }}
             className='inline-flex px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
           >
             <img src='/images/search.svg' alt='' className='w-5 rounded-md' />
@@ -104,6 +124,13 @@ const Layout = ({ children, title = 'ブックメモリー' }: Props) => {
         </div>
         <p className='text-center m-4'>©️E-LOVE</p>
       </footer>
+
+      {/* {searchButtonFlg && (
+        <SearchBookDialog
+          open={searchButtonFlg}
+          close={closeSearchBookDialog}
+        />
+      )} */}
     </div>
   );
 };
