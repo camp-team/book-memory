@@ -39,7 +39,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-50'>
+      <header className='fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30'>
         <a className='text-white text-base'>LOGO</a>
         <div className='ml-4 items-center hidden w-1/2 sm:flex'>
           <input
@@ -70,9 +70,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           {!currentUser ? (
             currentUser === null ? (
               //未ログインのパターン（ログインボタン表示）
-              <LoginDialogButton stylecss='ml-4 p-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'>
-                ログイン
-              </LoginDialogButton>
+              <LoginDialogButton>ログイン</LoginDialogButton>
             ) : (
               //ログイン情報取得中のパターン（つまりcurrentUserがundefiendの状態）
               //※Googleアイコン描写時に検索欄が動かないようにするためのダミー
@@ -86,7 +84,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
       </header>
 
       {searchBarVisible && (
-        <div className='fixed top-0 -inset-x-0 bg-blue-600 p-2 flex justify-between items-center sm:hidden'>
+        <div className='fixed top-0 -inset-x-0 bg-blue-600 p-2 flex justify-between items-center sm:hidden z-40'>
           <div className='flex items-center w-full'>
             <a
               href='#'
@@ -100,9 +98,14 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
               type='text'
               className='ml-1 w-9/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none'
               placeholder='本のタイトルを入力'
+              value={searchInput}
+              onChange={onChangeSearchInput}
             />
             <a
               href='#'
+              onClick={() => {
+                onClickSearchBook(searchInput);
+              }}
               className='inline-flex items-center justify-center px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
             >
               <img src='/images/search.svg' alt='' className='w-5 rounded-md' />

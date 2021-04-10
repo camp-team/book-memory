@@ -9,10 +9,18 @@ type Props = {
   input: string;
   onChange: VoidFunction;
   onClick: VoidFunction;
+  onWelcomeUpdateMemory: any;
   memories?: string[];
 };
 
-const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
+const LibraryMemory = ({
+  bid,
+  input,
+  onChange,
+  onClick,
+  memories,
+  onWelcomeUpdateMemory,
+}: Props) => {
   //メモリー数上限監視フック
   const [maxMemoryFlg, setMaxMemoryFlg] = useState(false);
   useEffect(() => {
@@ -25,10 +33,7 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
     <>
       {memories &&
         memories.map((memory, index) => (
-          <li
-            key={index}
-            className='group px-4 items-center text-sm cursor-pointer'
-          >
+          <li key={index} className='group items-center text-sm cursor-pointer'>
             <div className='flex p-1 bg-white border-gray-100 rounded-md'>
               <p className='pl-2 rounded-md flex-1 bg-white whitespace-pre-line break-all'>
                 {memory}
@@ -38,11 +43,12 @@ const LibraryMemory = ({ bid, input, onChange, onClick, memories }: Props) => {
                 bid={bid}
                 memoryIndex={index}
                 memories={memories && memories}
+                onWelcomeUpdateMemory={onWelcomeUpdateMemory}
               />
             </div>
           </li>
         ))}
-      <li className='mx-4 items-center text-sm flex relative rounded-md bg-white'>
+      <li className='items-center text-sm flex relative rounded-md bg-white'>
         {!maxMemoryFlg ? (
           <>
             <TextareaAutosize

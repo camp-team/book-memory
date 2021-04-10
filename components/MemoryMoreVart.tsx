@@ -10,11 +10,13 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { addMemory } from '../utils/memory';
 import EditMemoryDialog from './EditMemoryDialog';
+import { useRouter } from 'next/router';
 
 type Props = {
   bid: string;
   memoryIndex: number;
   memories: string[];
+  onWelcomeUpdateMemory: any;
 };
 
 const useStyles = makeStyles({
@@ -23,7 +25,13 @@ const useStyles = makeStyles({
   },
 });
 
-const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
+const MemoryMoreVert = ({
+  bid,
+  memoryIndex,
+  memories,
+  onWelcomeUpdateMemory,
+}: Props) => {
+  const router = useRouter();
   //　ーーーMoreVart用ーーー　//
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onClickMoreVart = (event: MouseEvent<HTMLButtonElement>) => {
@@ -54,7 +62,9 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   const onClickEditMemory = (index: number) => {
     if (editInput === '') return;
     memories[index] = editInput;
-    addMemory(bid, memories);
+    router.pathname === '/library'
+      ? addMemory(bid, memories)
+      : onWelcomeUpdateMemory(memories);
     setEditInput(memories[memoryIndex]);
     setEditDialogOpen(false);
   };
@@ -62,7 +72,9 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   // メモリー削除関数
   const onClickDeleteMemory = (index: number) => {
     memories.splice(index, 1);
-    addMemory(bid, memories);
+    router.pathname === '/library'
+      ? addMemory(bid, memories)
+      : onWelcomeUpdateMemory(memories);
     closeMoreVart();
   };
   const classes = useStyles();
