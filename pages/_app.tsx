@@ -16,9 +16,7 @@ export const AuthContext = createContext<AuthContextProps>({
 });
 
 const MyApp = ({ Component, pageProps }: any) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(
-    undefined
-  );
+  const [_, setCurrentUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
     AOS.init({
