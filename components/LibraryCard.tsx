@@ -14,7 +14,7 @@ type Props = {
 
 // Snacbar表示用↓
 function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const LibraryCard = ({ bid, imgUrl, title }: Props) => {
@@ -80,24 +80,24 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
   };
 
   return (
-    <div className='p-1 flex flex-col bg-blue-100 rounded w-full shadow hover:shadow-md duration-4'>
-      <div className='group relative p-1 flex flex-col'>
-        <div className='flex'>
+    <div className="p-1 flex flex-col bg-blue-100 rounded w-full shadow hover:shadow-md duration-4">
+      <div className="group relative p-1 flex flex-col">
+        <div className="flex">
           <img
             src={imgUrl}
-            alt='Some image'
-            className='w-16 flex self-center shadow-lg'
+            alt="Some image"
+            className="w-16 flex self-center shadow-lg"
           />
-          <p className='ml-2 p-1 h-20 font-medium text-base text-left line-clamp-3'>
+          <p className="ml-2 p-1 h-20 font-medium text-base text-left line-clamp-3">
             {title}
           </p>
         </div>
-        <div className='ml-2 absolute top-0 right-0'>
+        <div className="ml-2 absolute top-0 right-0">
           {router.pathname === '/library' && <BookMoreVert bid={bid} />}
         </div>
       </div>
-      <form className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-        <ul className='border border-gray-200 rounded-md divide-y divide-gray-200'>
+      <form className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+        <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
           <LibraryMemory
             bid={bid}
             input={input}
@@ -110,7 +110,7 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
       </form>
 
       <Snackbar open={openSnackbarMemoryOver} onClose={closeSnackbarMemoryOver}>
-        <Alert severity='error'>
+        <Alert severity="error">
           １レコードの上限(1000文字)をオーバーしました
         </Alert>
       </Snackbar>

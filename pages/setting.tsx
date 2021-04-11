@@ -16,8 +16,8 @@ export default function Terms() {
   ];
   return (
     <Layout>
-      <div className='pt-24 container mx-auto px-4'>
-        <h1 className='text-2xl pb-4 font-bold border-b-2'>ユーザー設定</h1>
+      <div className="pt-24 container mx-auto px-4">
+        <h1 className="text-2xl pb-4 font-bold border-b-2">ユーザー設定</h1>
         {settingContents.map((settingContent, idx) => (
           <div key={idx}>
             <SettingComponent

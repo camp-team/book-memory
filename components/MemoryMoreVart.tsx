@@ -79,19 +79,19 @@ const MemoryMoreVert = ({
   };
   const classes = useStyles();
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <IconButton
-        aria-label='more'
-        aria-controls='simple-menu'
-        aria-haspopup='true'
+        aria-label="more"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
         onClick={onClickMoreVart}
-        className='opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none'
+        className="opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none"
         style={{ padding: 0 }}
       >
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -99,15 +99,15 @@ const MemoryMoreVert = ({
       >
         <MenuItem onClick={() => onClickEditDialogOpen()}>
           <ListItemIcon classes={classes}>
-            <EditOutlinedIcon fontSize='small' />
+            <EditOutlinedIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>編集</Typography>
+          <Typography variant="inherit">編集</Typography>
         </MenuItem>
         <MenuItem onClick={() => onClickDeleteMemory(memoryIndex)}>
           <ListItemIcon classes={classes}>
-            <DeleteOutlineIcon fontSize='small' />
+            <DeleteOutlineIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>削除</Typography>
+          <Typography variant="inherit">削除</Typography>
         </MenuItem>
       </Menu>
 

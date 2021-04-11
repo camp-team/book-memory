@@ -26,28 +26,28 @@ const EditMemoryDialog = ({
       <Dialog
         open={open}
         onClose={closeHandle}
-        aria-labelledby='form-dialog-title'
-        maxWidth='lg'
-        scroll='body'
+        aria-labelledby="form-dialog-title"
+        maxWidth="lg"
+        scroll="body"
         fullWidth={true}
       >
         <DialogContent>
           <TextField
-            id='outlined-multiline-static'
-            label='編集'
+            id="outlined-multiline-static"
+            label="編集"
             multiline
             rows={8}
             onChange={onChangeEditMemory}
             value={editInput}
-            variant='outlined'
-            size='medium'
+            variant="outlined"
+            size="medium"
             fullWidth={true}
           />
         </DialogContent>
         <DialogActions>
           <button
             onClick={closeHandle}
-            className='bg-gray-200 p-2 mr-1 rounded-md '
+            className="bg-gray-200 p-2 mr-1 rounded-md "
           >
             キャンセル
           </button>
@@ -55,7 +55,7 @@ const EditMemoryDialog = ({
             onClick={() => {
               onClickEditMemory(memoryIndex);
             }}
-            className='bg-green-500 text-white p-2 mr-1 rounded-md '
+            className="bg-green-500 text-white p-2 mr-1 rounded-md "
           >
             更新
           </button>

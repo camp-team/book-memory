@@ -27,21 +27,21 @@ export default function DeleteUserDialog({ open, handelClick }: Props) {
       <Dialog
         open={open}
         onClose={handelClick}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id='alert-dialog-title'>
+        <DialogTitle id="alert-dialog-title">
           退会します。宜しいですか？
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
+          <DialogContentText id="alert-dialog-description">
             退会すると作成されたライブラリは全て削除され、戻すことはできません。
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <button
             onClick={handelClick}
-            className='bg-gray-200 p-2 mr-1 rounded-md focus:outline-none '
+            className="bg-gray-200 p-2 mr-1 rounded-md focus:outline-none "
           >
             キャンセル
           </button>
@@ -49,7 +49,7 @@ export default function DeleteUserDialog({ open, handelClick }: Props) {
             onClick={() => {
               currentUser && onClickDeleteUser();
             }}
-            className='bg-red-500 text-white p-2 mr-1 rounded-md '
+            className="bg-red-500 text-white p-2 mr-1 rounded-md "
           >
             退会する
           </button>

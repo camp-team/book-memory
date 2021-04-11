@@ -38,7 +38,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   return (
     <>
       <Head>
-        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <FuegoProvider fuego={fuego}>
         <Component {...pageProps} />

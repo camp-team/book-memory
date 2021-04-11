@@ -11,16 +11,16 @@ type Props = {
 const TermsPrivacypolicy = ({ title, contents }: Props) => (
   <>
     {title && (
-      <h2 className='my-4 text-xl font-semibold border-b-2 '>{title}</h2>
+      <h2 className="my-4 text-xl font-semibold border-b-2 ">{title}</h2>
     )}
-    <ol className='list-decimal px-6 py-2'>
+    <ol className="list-decimal px-6 py-2">
       {contents.map((content) => (
-        <li key={content.text} className='pb-1'>
+        <li key={content.text} className="pb-1">
           {content.text}
           {content.children && (
-            <ol className='list-decimal px-6 py-2'>
+            <ol className="list-decimal px-6 py-2">
               {content.children.map((childText) => (
-                <li key={childText} className='pb-1'>
+                <li key={childText} className="pb-1">
                   {childText}
                 </li>
               ))}

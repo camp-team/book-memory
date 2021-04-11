@@ -23,21 +23,21 @@ export default function DeleteBookDialog({
       <Dialog
         open={open}
         onClose={closeHandle}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id='alert-dialog-title'>
+        <DialogTitle id="alert-dialog-title">
           ライブラリから削除します。宜しいですか？
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
+          <DialogContentText id="alert-dialog-description">
             削除した本のメモは復活することはできません
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <button
             onClick={closeHandle}
-            className='bg-gray-200 p-2 mr-1 rounded-md focus:outline-none '
+            className="bg-gray-200 p-2 mr-1 rounded-md focus:outline-none "
           >
             キャンセル
           </button>
@@ -46,7 +46,7 @@ export default function DeleteBookDialog({
               onClickDeleteBook(bid);
               closeHandle();
             }}
-            className='bg-red-500 text-white p-2 mr-1 rounded-md '
+            className="bg-red-500 text-white p-2 mr-1 rounded-md "
           >
             削除
           </button>
