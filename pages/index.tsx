@@ -25,7 +25,7 @@ const IndexPage = () => {
           </div>
           <div className="mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full">
             <img
-              src="/images/welcome-top.svg"
+              src="/images/welcome-top-view.svg"
               className="w-64 md:w-full mx-auto max-w-xl"
               data-aos="fade-up"
               alt=""
