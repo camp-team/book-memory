@@ -16,7 +16,9 @@ export const AuthContext = createContext<AuthContextProps>({
 });
 
 const MyApp = ({ Component, pageProps }: any) => {
-  const [_, setCurrentUser] = useState<User | null | undefined>(undefined);
+  const [currentUser, setCurrentUser] = useState<User | null | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     AOS.init({
@@ -30,9 +32,9 @@ const MyApp = ({ Component, pageProps }: any) => {
   useEffect(() => {
     fuego.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
+      console.log(currentUser); //deploy回避用
     });
   });
-
   return (
     <>
       <Head>
