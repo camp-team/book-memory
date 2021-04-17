@@ -10,11 +10,13 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { addMemory } from '../utils/memory';
 import EditMemoryDialog from './EditMemoryDialog';
+import { useRouter } from 'next/router';
 
 type Props = {
   bid: string;
   memoryIndex: number;
   memories: string[];
+  onWelcomeUpdateMemory: any;
 };
 
 const useStyles = makeStyles({
@@ -23,7 +25,13 @@ const useStyles = makeStyles({
   },
 });
 
-const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
+const MemoryMoreVert = ({
+  bid,
+  memoryIndex,
+  memories,
+  onWelcomeUpdateMemory,
+}: Props) => {
+  const router = useRouter();
   //　ーーーMoreVart用ーーー　//
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onClickMoreVart = (event: MouseEvent<HTMLButtonElement>) => {
@@ -54,7 +62,9 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   const onClickEditMemory = (index: number) => {
     if (editInput === '') return;
     memories[index] = editInput;
-    addMemory(bid, memories);
+    router.pathname === '/library'
+      ? addMemory(bid, memories)
+      : onWelcomeUpdateMemory(memories);
     setEditInput(memories[memoryIndex]);
     setEditDialogOpen(false);
   };
@@ -62,24 +72,26 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
   // メモリー削除関数
   const onClickDeleteMemory = (index: number) => {
     memories.splice(index, 1);
-    addMemory(bid, memories);
+    router.pathname === '/library'
+      ? addMemory(bid, memories)
+      : onWelcomeUpdateMemory(memories);
     closeMoreVart();
   };
   const classes = useStyles();
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <IconButton
-        aria-label='more'
-        aria-controls='simple-menu'
-        aria-haspopup='true'
+        aria-label="more"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
         onClick={onClickMoreVart}
-        className='opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none'
+        className="opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none"
         style={{ padding: 0 }}
       >
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -87,15 +99,15 @@ const MemoryMoreVert = ({ bid, memoryIndex, memories }: Props) => {
       >
         <MenuItem onClick={() => onClickEditDialogOpen()}>
           <ListItemIcon classes={classes}>
-            <EditOutlinedIcon fontSize='small' />
+            <EditOutlinedIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>編集</Typography>
+          <Typography variant="inherit">編集</Typography>
         </MenuItem>
         <MenuItem onClick={() => onClickDeleteMemory(memoryIndex)}>
           <ListItemIcon classes={classes}>
-            <DeleteOutlineIcon fontSize='small' />
+            <DeleteOutlineIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>削除</Typography>
+          <Typography variant="inherit">削除</Typography>
         </MenuItem>
       </Menu>
 

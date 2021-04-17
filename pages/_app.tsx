@@ -4,6 +4,8 @@ import { fuego } from '../utils/firebase';
 import 'tailwindcss/tailwind.css';
 import { User } from 'firebase';
 import { FuegoProvider } from '@nandorojo/swr-firestore';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 type AuthContextProps = {
   currentUser: User | null | undefined;
@@ -19,15 +21,24 @@ const MyApp = ({ Component, pageProps }: any) => {
   );
 
   useEffect(() => {
+    AOS.init({
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 200,
+      duration: 600,
+    });
+  }, []);
+
+  useEffect(() => {
     fuego.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
+      console.log(currentUser); //deploy回避用
     });
   });
-
   return (
     <>
       <Head>
-        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <FuegoProvider fuego={fuego}>
         <Component {...pageProps} />

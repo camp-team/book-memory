@@ -13,9 +13,9 @@ export default function Library() {
   if (!data) return <Layout>loading</Layout>;
   return (
     <Layout>
-      <div className='py-16 px-2'>
-        <h2 className='pt-8 text-center font-bold'>📚 マイライブラリ 📚</h2>
-        <div className='grid gap-4 bg-grey-light p-4 w-full'>
+      <div className="container mx-auto py-16 px-2">
+        <h2 className="pt-8 text-center font-bold">📚 マイライブラリ 📚</h2>
+        <div className="grid gap-4 bg-grey-light p-2 w-full">
           {data &&
             data.map((book: any) => (
               <div key={book.id}>

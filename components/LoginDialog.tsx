@@ -12,11 +12,11 @@ const LoginDialog = (props: LoginDialogProps) => {
   const { open, close } = props;
 
   return (
-    <Dialog onClose={close} aria-labelledby='simple-dialog-title' open={open}>
-      <div className='text-center p-4'>
-        <p className='text-lg font-semibold'>読書管理をはじめる</p>
+    <Dialog onClose={close} aria-labelledby="simple-dialog-title" open={open}>
+      <div className="text-center p-4">
+        <p className="text-lg font-semibold">読書管理をはじめる</p>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={fuego.auth()} />
-        <p className='text-sm font-medium p-2'>
+        <p className="text-sm font-medium p-2">
           ※Googleアカウントでのみログインできます
         </p>
       </div>

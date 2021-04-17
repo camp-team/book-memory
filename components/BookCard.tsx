@@ -12,7 +12,7 @@ type Props = {
 };
 // Snackbar表示用
 function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const BookCard = ({ bid, imgUrl, title }: Props) => {
@@ -30,16 +30,16 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
   };
 
   return (
-    <div className='w-44 md:w-48 mx-auto p-2 text-center bg-blue-50 rounded-md shadow hover:shadow-lg'>
-      <figure className='h-36 grid justify-center align-center'>
+    <div className="w-44 md:w-48 mx-auto p-2 text-center bg-blue-50 rounded-md shadow hover:shadow-lg">
+      <figure className="h-36 grid justify-center align-center">
         <img
           src={imgUrl}
-          alt='Some image'
-          className='max-w-xs max-h-32 object-cover'
+          alt="Some image"
+          className="max-w-xs max-h-32 object-cover"
         />
       </figure>
-      <p className='p-2 h-16 font-bold text-sm mb-2 line-clamp-3'>{title}</p>
-      <div className='flex flex-col'>
+      <p className="p-2 h-16 font-bold text-sm mb-2 line-clamp-3">{title}</p>
+      <div className="flex flex-col">
         {currentUser && (
           <BookCardButton onClick={() => onClickAddLibrary()}>
             ライブラリ登録
@@ -51,7 +51,7 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
         autoHideDuration={3000}
         onClose={closeSnackbar}
       >
-        <Alert onClose={closeSnackbar} severity='info'>
+        <Alert onClose={closeSnackbar} severity="info">
           ライブラリに登録しました
         </Alert>
       </Snackbar>

@@ -162,9 +162,9 @@ export default function Terms() {
 
   return (
     <Layout>
-      <div className='pt-20 px-4'>
-        <h1 className='text-2xl font-bold'>プライバシーポリシー</h1>
-        <p className='py-8'>
+      <div className="pt-20 px-4">
+        <h1 className="text-2xl font-bold">プライバシーポリシー</h1>
+        <p className="py-8">
           本サービスは、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
         </p>
         {terms.map((term) => (
@@ -172,7 +172,7 @@ export default function Terms() {
             <TermsPrivacypolicy title={term.title} contents={term.contents} />
           </div>
         ))}
-        <p className='pt-4'>以上</p>
+        <p className="pt-4">以上</p>
       </div>
     </Layout>
   );

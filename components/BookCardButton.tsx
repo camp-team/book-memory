@@ -6,7 +6,7 @@ type Props = {
 };
 
 const BookCardButton = ({ children, onClick }: Props) => (
-  <div className='flex flex-col'>
+  <div className="flex flex-col">
     <button
       className={
         children === 'Amazon詳細'

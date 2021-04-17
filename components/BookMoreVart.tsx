@@ -18,7 +18,7 @@ type Props = {
 
 // Snacbar表示用↓
 function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 const useStyles = makeStyles({
   root: {
@@ -64,19 +64,19 @@ const MemoryMoreVert = ({ bid }: Props) => {
 
   const classes = useStyles();
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <IconButton
-        aria-label='more'
-        aria-controls='simple-menu'
-        aria-haspopup='true'
+        aria-label="more"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
         onClick={onClickMoreVart}
-        className='opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none'
+        className="opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none"
         style={{ padding: 0 }}
       >
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -84,9 +84,9 @@ const MemoryMoreVert = ({ bid }: Props) => {
       >
         <MenuItem onClick={openDeleteDialog}>
           <ListItemIcon classes={classes}>
-            <DeleteOutlineIcon fontSize='small' />
+            <DeleteOutlineIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>ライブラリから本を削除</Typography>
+          <Typography variant="inherit">ライブラリから本を削除</Typography>
         </MenuItem>
       </Menu>
 
@@ -106,7 +106,7 @@ const MemoryMoreVert = ({ bid }: Props) => {
         autoHideDuration={3000}
         onClose={closeSnackbarDeleteBook}
       >
-        <Alert severity='info'>ライブラリから本を削除しました</Alert>
+        <Alert severity="info">ライブラリから本を削除しました</Alert>
       </Snackbar>
     </div>
   );

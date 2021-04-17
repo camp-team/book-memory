@@ -19,9 +19,9 @@ export default function Search() {
   }, [booktitle]);
   return (
     <Layout>
-      <div className='pt-20 text-center bg-blue-100'>
-        　<p className='font-bold text-2xl'>検索結果</p>
-        <div className='container mx-auto grid grid-cols-2 gap-2 py-8 md:grid-cols-4 md:gap-4'>
+      <div className="pt-20 text-center bg-blue-100">
+        　<p className="font-bold text-2xl">検索結果</p>
+        <div className="container mx-auto grid grid-cols-2 gap-2 py-8 md:grid-cols-4 md:gap-4">
           {bookList &&
             bookList.map((book: Book, idx) => (
               <div key={idx}>

@@ -41,19 +41,19 @@ const MenuVar = () => {
   return (
     <div>
       <button
-        className='focus:outline-none'
-        aria-controls='simple-menu'
-        aria-haspopup='true'
+        className="focus:outline-none"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
         onClick={handleClick}
       >
         <img
           src={currentUser?.photoURL || 'https://picsum.photos/100/100'}
-          alt='Some image'
-          className='ml-4 rounded-full h-9 w-9 flex items-center justify-center'
+          alt="Some image"
+          className="ml-4 rounded-full h-9 w-9 flex items-center justify-center"
         />
       </button>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -61,21 +61,21 @@ const MenuVar = () => {
       >
         <MenuItem onClick={onClickMyLibrary}>
           <ListItemIcon classes={classes}>
-            <LibraryBooksIcon fontSize='small' />
+            <LibraryBooksIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>マイライブラリ</Typography>
+          <Typography variant="inherit">マイライブラリ</Typography>
         </MenuItem>
         <MenuItem onClick={onClickUserSetting}>
           <ListItemIcon classes={classes}>
-            <SettingsIcon fontSize='small' />
+            <SettingsIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit'>ユーザー設定</Typography>
+          <Typography variant="inherit">ユーザー設定</Typography>
         </MenuItem>
         <MenuItem onClick={onClickLogout}>
           <ListItemIcon classes={classes}>
-            <ExitToAppIcon fontSize='small' />
+            <ExitToAppIcon fontSize="small" />
           </ListItemIcon>
-          <Typography variant='inherit' noWrap>
+          <Typography variant="inherit" noWrap>
             ログアウト
           </Typography>
         </MenuItem>

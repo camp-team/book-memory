@@ -5,10 +5,9 @@ import { fuego } from '../utils/firebase';
 
 type Props = {
   children: string;
-  stylecss: string;
 };
 
-const LoginDialogButton = ({ children, stylecss }: Props) => {
+const LoginDialogButton = ({ children }: Props) => {
   const currentUser = fuego.auth().currentUser;
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -21,7 +20,16 @@ const LoginDialogButton = ({ children, stylecss }: Props) => {
   };
   return (
     <>
-      <button className={stylecss} onClick={handleClickOpen}>
+      <button
+        className={
+          children === 'はじめる'
+            ? 'mt-10 bg-white px-12 py-4 border rounded-full shadow-sm text-base font-medium text-blue-600 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2'
+            : children === '使ってみる'
+            ? 'bg-blue-500 whitespace-nowrap px-12 py-4 border-2 border-blue-500 rounded-full shadow-sm text-base font-medium text-white hover:bg-green-50 hover:text-blue-500 focus:outline-none focus:ring-2'
+            : 'ml-4 p-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500'
+        }
+        onClick={handleClickOpen}
+      >
         {children}
       </button>
       <LoginDialog open={open} close={handleClose} />
