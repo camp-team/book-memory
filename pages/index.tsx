@@ -23,13 +23,11 @@ const IndexPage = () => {
             </p>
             <LoginDialogButton>はじめる</LoginDialogButton>
           </div>
-          <div
-            className="mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full"
-            data-aos="fade-up"
-          >
+          <div className="mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full">
             <img
               src="/images/welcome-top.svg"
               className="w-64 md:w-full mx-auto max-w-xl"
+              data-aos="fade-up"
               alt=""
             />
           </div>
