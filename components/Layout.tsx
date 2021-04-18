@@ -1,10 +1,10 @@
 import React, { ReactNode, useState, ChangeEvent } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import LoginDialogButton from '../components/LoginDialogButton';
 import MenuVar from '../components/MenuVar';
 import { useRouter } from 'next/router';
 import { fuego } from '@nandorojo/swr-firestore';
+import { NextSeo } from 'next-seo';
 
 type Props = {
   children?: ReactNode;
@@ -31,16 +31,23 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
       query: { booktitle: input },
     });
   };
-
+  const onClickLogo = () => {
+    router.push('/');
+  };
   return (
     <div>
-      <Head>
-        <title>{title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <NextSeo
+        title={title}
+        description="読書記録ツール"
+        openGraph={{
+          url: `https://book-memory.com`,
+          images: [{ url: '/images/bookmemory-ogp.jpg', alt: 'BookMemory' }],
+        }}
+      />
       <header className="fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30">
-        <a className="text-white text-base">LOGO</a>
+        <a onClick={onClickLogo} className="cursor-pointer">
+          <img src="/images/logo_BookMemory.png" alt="" className="w-36" />
+        </a>
         <div className="ml-4 items-center hidden w-1/2 sm:flex">
           <input
             type="text"
@@ -127,13 +134,6 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
         </div>
         <p className="text-center m-4">©️E-LOVE</p>
       </footer>
-
-      {/* {searchButtonFlg && (
-        <SearchBookDialog
-          open={searchButtonFlg}
-          close={closeSearchBookDialog}
-        />
-      )} */}
     </div>
   );
 };
