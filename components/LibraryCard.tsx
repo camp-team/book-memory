@@ -5,6 +5,7 @@ import { addMemory, useMemory } from '../utils/memory';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 type Props = {
   bid: string;
@@ -83,10 +84,12 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
     <div className="p-1 flex flex-col bg-blue-100 rounded w-full shadow hover:shadow-md duration-4">
       <div className="group relative p-1 flex flex-col">
         <div className="flex">
-          <img
+          <Image
             src={imgUrl}
-            alt="Some image"
-            className="w-16 flex self-center shadow-lg"
+            alt=""
+            width={64}
+            height={96}
+            className="flex self-center shadow-lg"
           />
           <p className="ml-2 p-1 h-20 font-medium text-base text-left line-clamp-3">
             {title}
