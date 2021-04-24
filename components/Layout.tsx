@@ -43,6 +43,11 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           url: `https://book-memory.com`,
           images: [{ url: '/images/bookmemory-ogp.jpg', alt: 'BookMemory' }],
         }}
+        twitter={{
+          handle: '@welove_tk',
+          site: '@welove_tk',
+          cardType: 'summary_large_image',
+        }}
       />
       <header className="fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30">
         <a onClick={onClickLogo} className="cursor-pointer">
