@@ -122,7 +122,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
       )}
 
       <main>{children}</main>
-      <footer className="pt-10 pb-8 bg-gray-50">
+      <footer className="pt-10 pb-8 bg-gray-50 opacity-70">
         <div className="flex flex-wrap justify-center space-x-4">
           <Link href="/terms">
             <a>利用規約</a>
@@ -130,9 +130,18 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           <Link href="/privacypolicy">
             <a>プライバシーポリシー</a>
           </Link>
-          <a href="#">お問合せ</a>
         </div>
-        <p className="text-center m-4">©️E-LOVE</p>
+        <p className="text-center m-4">
+          このサービスは
+          <a
+            href="https://twitter.com/welove_tk"
+            target="_blank"
+            className="underline"
+          >
+            @welove_tk
+          </a>
+          が作成しました
+        </p>
       </footer>
     </div>
   );
