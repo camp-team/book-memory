@@ -14,7 +14,7 @@ const IndexPage = () => {
             </h1>
             <p className="mt-4 mb-4 text-gray-600">
               BookMemoryは
-              <span className="text-base pb-1 md:text-lg font-black text-blue-600 border-b-2 border-blue-600">
+              <span className="text-base pb-1 md:text-lg font-black text-blue-700 border-b-2 border-blue-700">
                 超シンプルな読書管理ツール
               </span>
               です
