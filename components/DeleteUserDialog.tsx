@@ -18,8 +18,15 @@ export default function DeleteUserDialog({ open, handelClick }: Props) {
   // 退会処理
   const onClickDeleteUser = async () => {
     handelClick();
+    await fuego
+      .auth()
+      .currentUser?.delete()
+      .catch(() => {
+        alert(
+          `退会するには再認証が必要です。お手数ですが、再度ログインしてもう一度退会処理を実行して下さい。`
+        );
+      });
     await Router.push('/');
-    await fuego.auth().currentUser?.delete();
     await fuego.auth().signOut();
   };
   return (

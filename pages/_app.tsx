@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   useEffect(() => {
     fuego.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-      console.log(currentUser); //deploy回避用
+      currentUser || console.log(); //deploy回避用
     });
   });
   return (
