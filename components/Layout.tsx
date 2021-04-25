@@ -144,6 +144,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           <a
             href="https://twitter.com/welove_tk"
             target="_blank"
+            rel="noopener"
             className="underline"
           >
             @welove_tk
