@@ -82,7 +82,7 @@ const MemoryMoreVert = ({
     <div className="flex flex-col">
       <IconButton
         aria-label="more"
-        aria-controls="simple-menu"
+        aria-controls={'simple-memory' + memoryIndex}
         aria-haspopup="true"
         onClick={onClickMoreVart}
         className="opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none"
@@ -91,7 +91,7 @@ const MemoryMoreVert = ({
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id="simple-menu"
+        id={'simple-memory' + memoryIndex}
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}

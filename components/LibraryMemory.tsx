@@ -3,6 +3,7 @@ import MemoryMoreVart from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Tooltip from '@material-ui/core/Tooltip';
 
 type Props = {
   bid: string;
@@ -61,14 +62,16 @@ const LibraryMemory = ({
             ></TextareaAutosize>
 
             <div className="ml-2 absolute bottom-0 right-0 ">
-              <IconButton
-                className="focus:outline-none"
-                size="small"
-                style={{ color: 'green' }}
-                onClick={onClick}
-              >
-                <CheckOutlinedIcon fontSize="small" className="text-sm" />
-              </IconButton>
+              <Tooltip title="登録" arrow>
+                <IconButton
+                  className="focus:outline-none"
+                  size="small"
+                  style={{ color: 'green' }}
+                  onClick={onClick}
+                >
+                  <CheckOutlinedIcon fontSize="small" className="text-sm" />
+                </IconButton>
+              </Tooltip>
             </div>
           </>
         ) : (
