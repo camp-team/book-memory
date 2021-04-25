@@ -1,19 +1,20 @@
 import Layout from '../components/Layout';
 import LoginDialogButton from '../components/LoginDialogButton';
 import LibraryCard from '../components/LibraryCard';
+import Image from 'next/image';
 
 const IndexPage = () => {
   return (
     <Layout title="ブックメモリー">
       <section className="pt-10 pb-4 bg-blue-100">
-        <div className="md:container md:mx-auto md:flex md:justify-between">
+        <div className="container md:mx-auto md:flex md:justify-between">
           <div className="my-8 w-full text-center md:mt-48">
             <h1 className="text-2xl font-semibold text-center md:text-3xl">
               あなたの読書を記録しよう
             </h1>
             <p className="mt-4 mb-4 text-gray-600">
               BookMemoryは
-              <span className="text-base pb-1 md:text-lg font-black text-blue-600 border-b-2 border-blue-600">
+              <span className="text-base pb-1 md:text-lg font-black text-blue-700 border-b-2 border-blue-700">
                 超シンプルな読書管理ツール
               </span>
               です
@@ -23,10 +24,11 @@ const IndexPage = () => {
             </p>
             <LoginDialogButton>はじめる</LoginDialogButton>
           </div>
-          <div className="mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full">
-            <img
+          <div className="px-6 mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full">
+            <Image
               src="/images/welcome-top-view.svg"
-              className="w-64 md:w-full mx-auto max-w-xl"
+              width={500}
+              height={500}
               data-aos="fade-up"
               alt=""
             />
@@ -50,24 +52,28 @@ const IndexPage = () => {
             </p>
           </div>
           <div className="flex justify-center my-10 md:container mx-auto md:w-full">
-            <img
+            <Image
               src="/images/reading-yellowman.svg"
-              className="w-40 ml-auto md:w-60 md:max-w-md"
+              width={250}
+              height={250}
               data-aos="fade-up"
               alt=""
             />
 
             <div className="w-10 animate-pulse flex items-center">
-              <img
+              <Image
                 src="/images/right-arrow.svg"
+                width={300}
+                height={300}
                 data-aos="fade-up"
                 data-aos-delay="600"
                 alt=""
               />
             </div>
-            <img
+            <Image
               src="/images/questions-yellowman.svg"
-              className="w-40 mr-auto md:w-60 md:max-w-md"
+              width={250}
+              height={250}
               data-aos="fade-up"
               data-aos-delay="1500"
               alt=""
@@ -89,23 +95,27 @@ const IndexPage = () => {
             </p>
           </div>
           <div className="flex justify-center my-10 md:container mx-auto md:w-full">
-            <img
+            <Image
               src="/images/notebook-blueman.svg"
-              className="w-40 ml-auto md:w-60 md:max-w-md"
+              width={250}
+              height={250}
               data-aos="fade-up"
               alt=""
             />
             <div className="w-10 animate-pulse flex items-center">
-              <img
+              <Image
                 src="/images/right-arrow.svg"
+                width={300}
+                height={300}
                 data-aos="fade-up"
                 data-aos-delay="600"
                 alt=""
               />
             </div>
-            <img
+            <Image
               src="/images/brain-blueman.svg"
-              className="w-40 mr-auto md:w-60 md:max-w-md"
+              width={250}
+              height={250}
               data-aos="fade-up"
               data-aos-delay="1500"
               alt=""
@@ -133,7 +143,12 @@ const IndexPage = () => {
               <p className="text-blue-600 font-bold pt-4 items-center">
                 記録したい本を検索
               </p>
-              <img src="/images/welcome-step1.svg" className="w-40" alt="" />
+              <Image
+                src="/images/welcome-step1.svg"
+                width={160}
+                height={160}
+                alt=""
+              />
             </div>
             <div className="shadow-md border-2 border-blue-500 border-opacity-25 rounded-3xl my-2 pb-4 pt-6 px-4 bg-white text-center items-center flex flex-col">
               <div className="text-xl bg-blue-100 text-blue-700 font-bold border-2 border-blue-100 rounded-full h-12 w-12 flex items-center justify-center">
@@ -142,7 +157,12 @@ const IndexPage = () => {
               <p className="text-blue-600 font-bold pt-4 items-center">
                 ライブラリに登録
               </p>
-              <img src="/images/welcome-step2.svg" className="w-40" alt="" />
+              <Image
+                src="/images/welcome-step2.svg"
+                width={160}
+                height={160}
+                alt=""
+              />
             </div>
             <div className="shadow-md border-2 border-blue-500 border-opacity-25 rounded-3xl my-2 pb-4 pt-6 px-4 bg-white text-center items-center flex flex-col">
               <div className="text-xl bg-blue-100 text-blue-700 font-bold border-2 border-blue-100 rounded-full h-12 w-12 flex items-center justify-center">
@@ -151,7 +171,12 @@ const IndexPage = () => {
               <p className="text-blue-600 font-bold pt-4 items-center">
                 読書記録スタート！
               </p>
-              <img src="/images/welcome-step3.svg" className="w-40" alt="" />
+              <Image
+                src="/images/welcome-step3.svg"
+                width={160}
+                height={160}
+                alt=""
+              />
             </div>
           </div>
         </div>
