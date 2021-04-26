@@ -43,6 +43,11 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           url: `https://book-memory.com`,
           images: [{ url: '/images/bookmemory-ogp.jpg', alt: 'BookMemory' }],
         }}
+        twitter={{
+          handle: '@welove_tk',
+          site: '@welove_tk',
+          cardType: 'summary_large_image',
+        }}
       />
       <header className="fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30">
         <a onClick={onClickLogo} className="cursor-pointer">
@@ -62,6 +67,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
               onClickSearchBook(searchInput);
             }}
             className="inline-flex px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500"
+            aria-label="検索"
           >
             <img src="/images/search.svg" alt="" className="w-5 rounded-md" />
           </a>
@@ -71,6 +77,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
             href="#"
             className="inline-flex items-center justify-center px-2 py-2 border border-white rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-500 sm:hidden"
             onClick={onClickSearchBarVisible}
+            aria-label="検索欄表示"
           >
             <img src="/images/search.svg" alt="" className="w-5" />
           </a>
@@ -114,6 +121,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
                 onClickSearchBook(searchInput);
               }}
               className="inline-flex items-center justify-center px-2 py-2 border border-white rounded-r-md shadow-sm text-sm font-medium text-white hover:bg-blue-500"
+              aria-label="検索"
             >
               <img src="/images/search.svg" alt="" className="w-5 rounded-md" />
             </a>
@@ -122,7 +130,7 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
       )}
 
       <main>{children}</main>
-      <footer className="pt-10 pb-8 bg-gray-50">
+      <footer className="pt-10 pb-8 bg-gray-50 opacity-70">
         <div className="flex flex-wrap justify-center space-x-4">
           <Link href="/terms">
             <a>利用規約</a>
@@ -130,9 +138,19 @@ export const Layout = ({ children, title = 'ブックメモリー' }: Props) => 
           <Link href="/privacypolicy">
             <a>プライバシーポリシー</a>
           </Link>
-          <a href="#">お問合せ</a>
         </div>
-        <p className="text-center m-4">©️E-LOVE</p>
+        <p className="text-center m-4">
+          このサービスは
+          <a
+            href="https://twitter.com/welove_tk"
+            target="_blank"
+            rel="noopener"
+            className="underline"
+          >
+            @welove_tk
+          </a>
+          が作成しました
+        </p>
       </footer>
     </div>
   );
