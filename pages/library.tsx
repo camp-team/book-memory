@@ -30,6 +30,7 @@ export default function Library() {
       limit,
       ignoreFirestoreDocumentSnapshotField: false,
       listen: true,
+      orderBy: ['createdat', 'desc'],
     },
     {
       revalidateOnFocus: false,
@@ -61,8 +62,8 @@ export default function Library() {
     return (
       <Layout>
         <div className="py-20 text-center text-gray-500">
-          <p>ライブラリはありません</p>
-          <p>本を登録してください</p>
+          <p>ライブラリに本はありません</p>
+          <p>本を検索してライブラリに登録してください</p>
         </div>
       </Layout>
     );
