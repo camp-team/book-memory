@@ -1,5 +1,6 @@
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/functions';
 import firebase from 'firebase/app';
 import { Fuego } from '@nandorojo/swr-firestore';
 
@@ -24,4 +25,10 @@ const uiConfig = {
   },
   signInSuccessUrl: '/library',
 };
-export { uiConfig, fuego };
+
+//退会処理の呼び出し
+const app = firebase.app();
+const functions = app.functions('asia-northeast1');
+const callable = functions.httpsCallable('deleteUser');
+
+export { uiConfig, fuego, callable };
