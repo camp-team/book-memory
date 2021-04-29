@@ -9,22 +9,16 @@ const IndexPage = () => {
       <section className="pt-10 pb-4 bg-blue-100">
         <div className="container md:mx-auto md:flex md:justify-between">
           <div className="my-8 w-full text-center md:mt-48">
-            <h1 className="text-2xl font-semibold text-center md:text-3xl">
-              あなたの読書を記録しよう
+            <h1 className="text-4xl mb-2 font-semibold text-center tracking-wider">
+              BookMemory
             </h1>
-            <p className="mt-4 mb-4 text-gray-600">
-              BookMemoryは
-              <span className="text-base pb-1 md:text-lg font-black text-blue-700 border-b-2 border-blue-700">
-                超シンプルな読書管理ツール
-              </span>
-              です
+            <p className="text-lg mb-6 md:text-lg font-black text-blue-700">
+              ー 超シンプルな読書管理ツール ー
             </p>
-            <p className="mt-2 text-gray-600">
-              あなたが読んだ本の内容を記録しましょう
-            </p>
+            <p className="text-gray-600">あなたが読んだ本の内容を記録しよう</p>
             <LoginDialogButton>はじめる</LoginDialogButton>
           </div>
-          <div className="px-6 mt-8 md:mt-16 md:h-96 md:mb-44 text-center w-full">
+          <div className="px-6 mt-6 md:mt-16 md:h-96 md:mb-44 text-center w-full">
             <Image
               src="/images/welcome-top-view.svg"
               width={500}
@@ -36,18 +30,18 @@ const IndexPage = () => {
         </div>
       </section>
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-2 md:flex md:flex-row-reverse">
+        <div className="container mx-auto px-2 md:flex md:flex-row-reverse md:items-center">
           <div className="my-8 w-full text-center md:my-16">
-            <h2 className="text-xl font-semibold text-center md:text-2xl">
+            <h2 className="text-lg font-semibold text-center md:text-2xl">
               一度読んだ本、覚えていますか？
             </h2>
-            <p className="text-base mt-4 mb-2 text-gray-600">
+            <p className="text-sm mt-4 mb-2 text-gray-600 md:text-base">
               毎日どれだけ多くの本を読んだとしても
             </p>
-            <p className="text-base mt-2 mb-2 text-gray-600">
+            <p className="text-sm mt-2 mb-2 text-gray-600 md:text-base">
               日が経つにつれて忘れてしまいます
             </p>
-            <p className="text-base mt-2 mb-2 text-gray-600">
+            <p className="text-sm mt-2 mb-2 text-gray-600 md:text-base">
               これは仕方のないことです
             </p>
           </div>
@@ -82,16 +76,16 @@ const IndexPage = () => {
         </div>
       </section>
       <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-2 md:flex">
+        <div className="container mx-auto px-2 md:flex md:items-center">
           <div className="my-8 w-full text-center md:my-8">
-            <h2 className="md:pt-8 text-xl font-semibold text-center md:text-2xl">
+            <h2 className="text-lg font-semibold text-center md:text-2xl">
               読んだ本を記録しよう！
             </h2>
-            <p className="text-sm mt-4 mb-2 text-gray-600">
+            <p className="text-sm mt-4 mb-2 text-gray-600 md:text-base">
               インプットだけでは記憶は定着しません
             </p>
-            <p className="text-sm mt-4 mb-2 text-gray-600">
-              アウトプットすることで記憶の定着率が高まります
+            <p className="text-sm mt-4 mb-2 text-gray-600 md:text-base">
+              アウトプットにより記憶の定着率が高まります
             </p>
           </div>
           <div className="flex justify-center my-10 md:container mx-auto md:w-full">
@@ -125,9 +119,10 @@ const IndexPage = () => {
       </section>
       <section className="container mx-auto py-20 bg-white">
         <div className="text-center">
-          <h2 className="inline pt-8 pb-1 text-2xl font-semibold border-b-4 border-blue-500">
+          <h2 className="inline-block pt-8 pb-2 text-2xl font-semibold">
             BookMemoryについて
           </h2>
+          <p className="mx-auto w-16 h-2 bg-blue-500"></p>
           <p className="text-base mt-6 mb-2 text-gray-600">
             当サービスは読書記録に特化しています
           </p>
@@ -182,7 +177,10 @@ const IndexPage = () => {
         </div>
       </section>
       <section className="px-4 py-8 bg-white">
-        <p className="text-center pb-4 text-lg font-bold">〜 サンプル 〜</p>
+        <p className="text-center pb-2 text-lg font-bold">〜 サンプル 〜</p>
+        <p className="text-sm text-center pb-2 text-gray-600 md:text-base">
+          以下のように記録できます
+        </p>
         <div className="container mx-auto">
           <LibraryCard
             bid={'default'}
