@@ -4,30 +4,27 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { fuego } from '../utils/firebase';
-import Router from 'next/router';
+import { fuego, callable } from '../utils/firebase';
+import { useRouter } from 'next/router';
 
 type Props = {
   open: boolean;
   handelClick: VoidFunction;
 };
-
 export default function DeleteUserDialog({ open, handelClick }: Props) {
   const currentUser = fuego.auth().currentUser;
-
+  const router = useRouter();
   // 退会処理
   const onClickDeleteUser = async () => {
     handelClick();
-    await fuego
-      .auth()
-      .currentUser?.delete()
-      .catch(() => {
-        alert(
-          `退会するには再認証が必要です。お手数ですが、再度ログインしてもう一度退会処理を実行して下さい。`
-        );
+    callable({})
+      .then(() => {
+        fuego.auth().signOut();
+        router.push('/');
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    await Router.push('/');
-    await fuego.auth().signOut();
   };
   return (
     <div>
