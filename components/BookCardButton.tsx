@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  onClick: any;
+  onClick: VoidFunction;
 };
 
 const BookCardButton = ({ children, onClick }: Props) => (
@@ -10,8 +10,9 @@ const BookCardButton = ({ children, onClick }: Props) => (
     <button
       className={
         children === 'Amazon詳細'
-          ? 'bg-yellow-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
-          : 'bg-blue-400 text-white font-bold p-2 text-xs shadow rounded focus:outline-none'
+          ? 'bg-yellow-400'
+          : 'bg-blue-400' +
+            ' text-white font-bold p-2 text-xs shadow rounded focus:outline-none hover:shadow-md'
       }
       onClick={onClick}
     >

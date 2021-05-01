@@ -21,10 +21,13 @@ export default function Search() {
     <Layout>
       <div className="pt-16 text-center bg-blue-100">
         <p className="py-4 text-center text-5xl md:pt-8 md:text-7xl">🔎</p>
-        <h1 className="text-center text-lg font-bold md:text-2xl">検索結果</h1>
-        <div className="container mx-auto grid grid-cols-2 gap-1 py-8 md:grid-cols-4 md:gap-4">
-          {bookList &&
-            bookList.map((book: Book, idx) => (
+        <h1 className="pb-1 text-center text-lg font-bold md:text-2xl tracking-widest">
+          検索結果
+        </h1>
+        <p>（上位10件を表示）</p>
+        {bookList?.length ? (
+          <div className="container mx-auto grid grid-cols-2 gap-1 py-8 md:grid-cols-4 md:gap-4">
+            {bookList.map((book: Book, idx) => (
               <div key={idx}>
                 <BookCard
                   bid={book.bid}
@@ -33,7 +36,10 @@ export default function Search() {
                 />
               </div>
             ))}
-        </div>
+          </div>
+        ) : (
+          <p className="text-center py-10">本は見つかりませんでした</p>
+        )}
       </div>
     </Layout>
   );
