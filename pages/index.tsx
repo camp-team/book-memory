@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const IndexPage = () => {
   return (
-    <Layout title="ブックメモリー">
+    <Layout title="BookMemory">
       <section className="pt-10 pb-4 bg-blue-100">
         <div className="container md:mx-auto md:flex md:justify-between">
           <div className="my-8 w-full text-center md:mt-48">
