@@ -1,36 +1,29 @@
 import React, { useState } from 'react';
-import BookCardButton from '../components/BookCardButton';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { BookCardButton } from '../components/BookCardButton';
 import { addBook } from '../utils/book';
-import { fuego } from '../utils/firebase';
+
+import { SnackbarComponent } from './SnackbarComponent';
 
 type Props = {
   bid: string;
   imgUrl: string;
   title: string;
+  uid?: string;
+  isLibrary?: boolean;
 };
-// Snackbar表示用
-function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
-const BookCard = ({ bid, imgUrl, title }: Props) => {
-  const currentUser = fuego.auth().currentUser;
+export const BookCard = ({ bid, imgUrl, title, uid, isLibrary }: Props) => {
   // 「ライブラリ登録」Snackbar表示ステイト
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const closeSnackbar = () => {
-    setOpenSnackbar(false);
-  };
-
+  console.log(isLibrary);
   // ライブラリ登録
-  const onClickAddLibrary = () => {
+  const addLibrary = () => {
     addBook(bid, title, imgUrl);
     setOpenSnackbar(true);
   };
 
   return (
-    <div className="w-44 md:w-48 mx-auto p-2 text-center bg-blue-50 rounded-md shadow hover:shadow-lg">
+    <div className="w-40 md:w-48 mx-auto p-2 text-center bg-blue-50 rounded-md">
       <figure className="h-36 grid justify-center align-center">
         <img
           src={imgUrl}
@@ -40,23 +33,22 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
       </figure>
       <p className="p-2 h-16 font-bold text-sm mb-2 line-clamp-3">{title}</p>
       <div className="flex flex-col">
-        {currentUser && (
-          <BookCardButton onClick={() => onClickAddLibrary()}>
-            ライブラリ登録
-          </BookCardButton>
-        )}
+        {uid &&
+          (isLibrary ? (
+            <BookCardButton onClick={() => {}}>登録済み</BookCardButton>
+          ) : (
+            <BookCardButton onClick={() => addLibrary()}>
+              ライブラリ登録
+            </BookCardButton>
+          ))}
       </div>
-      <Snackbar
+      <SnackbarComponent
         open={openSnackbar}
-        autoHideDuration={3000}
-        onClose={closeSnackbar}
+        close={() => setOpenSnackbar(false)}
+        severity="info"
       >
-        <Alert onClose={closeSnackbar} severity="info">
-          ライブラリに登録しました
-        </Alert>
-      </Snackbar>
+        ライブラリに登録しました
+      </SnackbarComponent>
     </div>
   );
 };
-
-export default BookCard;
