@@ -34,7 +34,7 @@ const EditMemoryDialog = ({
         <DialogContent>
           <TextField
             id="outlined-multiline-static"
-            label="編集"
+            label="必須入力です"
             multiline
             rows={8}
             onChange={onChangeEditMemory}
@@ -47,7 +47,7 @@ const EditMemoryDialog = ({
         <DialogActions>
           <button
             onClick={closeHandle}
-            className="bg-gray-200 p-2 mr-1 rounded-md "
+            className="bg-gray-200 p-2 mr-1 rounded-md focus:outline-none"
           >
             キャンセル
           </button>
@@ -55,7 +55,7 @@ const EditMemoryDialog = ({
             onClick={() => {
               onClickEditMemory(memoryIndex);
             }}
-            className="bg-green-500 text-white p-2 mr-1 rounded-md "
+            className="bg-green-500 text-white p-2 mr-1 rounded-md focus:outline-none "
           >
             更新
           </button>
