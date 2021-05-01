@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import BookCardButton from '../components/BookCardButton';
+import { BookCardButton } from '../components/BookCardButton';
 import { addBook } from '../utils/book';
-import { fuego } from '../utils/firebase';
+
 import { SnackbarComponent } from './SnackbarComponent';
 
 type Props = {
   bid: string;
   imgUrl: string;
   title: string;
+  uid?: string;
+  isLibrary?: boolean;
 };
 
-const BookCard = ({ bid, imgUrl, title }: Props) => {
-  const currentUser = fuego.auth().currentUser;
+export const BookCard = ({ bid, imgUrl, title, uid, isLibrary }: Props) => {
   // 「ライブラリ登録」Snackbar表示ステイト
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
+  console.log(isLibrary);
   // ライブラリ登録
   const addLibrary = () => {
     addBook(bid, title, imgUrl);
@@ -32,11 +33,14 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
       </figure>
       <p className="p-2 h-16 font-bold text-sm mb-2 line-clamp-3">{title}</p>
       <div className="flex flex-col">
-        {currentUser && (
-          <BookCardButton onClick={() => addLibrary()}>
-            ライブラリ登録
-          </BookCardButton>
-        )}
+        {uid &&
+          (isLibrary ? (
+            <BookCardButton onClick={() => {}}>登録済み</BookCardButton>
+          ) : (
+            <BookCardButton onClick={() => addLibrary()}>
+              ライブラリ登録
+            </BookCardButton>
+          ))}
       </div>
       <SnackbarComponent
         open={openSnackbar}
@@ -48,5 +52,3 @@ const BookCard = ({ bid, imgUrl, title }: Props) => {
     </div>
   );
 };
-
-export default BookCard;

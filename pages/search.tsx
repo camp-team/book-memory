@@ -1,15 +1,27 @@
 import Layout from '../components/Layout';
-import BookCard from '../components/BookCard';
+import { BookCard } from '../components/BookCard';
 import { useRouter } from 'next/router';
 import { searchBooks } from '../utils/search-books';
 import { useEffect, useState } from 'react';
 import { Book } from '../interfaces/Book';
+import { fuego } from '../utils/firebase';
+import { useCollection } from '@nandorojo/swr-firestore';
 
 export default function Search() {
   const router = useRouter();
+  //ユーザー取得
+  const currentUser = fuego.auth().currentUser;
+
+  //ユーザーのライブラリのドキュメントid（bid）取得
+  const { data } = useCollection(`users/${currentUser?.uid}/books`, {
+    listen: true,
+  });
+  const libraryBookId = data?.map((bookData) => bookData.id);
+
   //検索ヘッダの本のタイトルを取得
   const booktitle: any = router.query.booktitle; //検索結果の保管ステート
   const [bookList, setBookList] = useState<Book[]>([]);
+
   //本検索処理　ヘッダが検索される都度処理発生
   useEffect(() => {
     booktitle &&
@@ -33,6 +45,8 @@ export default function Search() {
                   bid={book.bid}
                   imgUrl={book.imgUrl}
                   title={book.title}
+                  uid={currentUser?.uid}
+                  isLibrary={libraryBookId?.includes(book.bid)}
                 />
               </div>
             ))}
