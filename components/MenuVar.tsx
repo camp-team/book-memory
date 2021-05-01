@@ -7,44 +7,34 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { fuego } from '../utils/firebase';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 32,
+    minWidth: 40,
   },
 });
-const MenuVar = () => {
+export const MenuVar = () => {
   const currentUser = fuego.auth().currentUser;
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
-  const onClickMyLibrary = () => {
-    Router.push('/library');
-  };
-  const onClickUserSetting = () => {
-    Router.push('/setting');
-  };
-  const onClickLogout = () => {
-    Router.push('/');
+  // サインアウト処理
+  const logout = () => {
+    router.push('/');
     fuego.auth().signOut();
   };
-
   const classes = useStyles();
-
   return (
-    <div>
+    <>
       <button
         className="focus:outline-none"
         aria-controls="simple-menu"
         aria-haspopup="true"
-        onClick={handleClick}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+          setAnchorEl(event.currentTarget);
+        }}
       >
         <img
           src={currentUser?.photoURL || 'https://picsum.photos/100/100'}
@@ -57,21 +47,31 @@ const MenuVar = () => {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
+        onClose={() => {
+          setAnchorEl(null);
+        }}
       >
-        <MenuItem onClick={onClickMyLibrary}>
+        <MenuItem
+          onClick={() => {
+            router.push('/library');
+          }}
+        >
           <ListItemIcon classes={classes}>
             <LibraryBooksIcon fontSize="small" />
           </ListItemIcon>
           <Typography variant="inherit">マイライブラリ</Typography>
         </MenuItem>
-        <MenuItem onClick={onClickUserSetting}>
+        <MenuItem
+          onClick={() => {
+            router.push('/setting');
+          }}
+        >
           <ListItemIcon classes={classes}>
             <SettingsIcon fontSize="small" />
           </ListItemIcon>
           <Typography variant="inherit">ユーザー設定</Typography>
         </MenuItem>
-        <MenuItem onClick={onClickLogout}>
+        <MenuItem onClick={logout}>
           <ListItemIcon classes={classes}>
             <ExitToAppIcon fontSize="small" />
           </ListItemIcon>
@@ -80,7 +80,6 @@ const MenuVar = () => {
           </Typography>
         </MenuItem>
       </Menu>
-    </div>
+    </>
   );
 };
-export default MenuVar;
