@@ -22,7 +22,7 @@ export default function Search() {
       <div className="pt-16 text-center bg-blue-100">
         <p className="py-4 text-center text-5xl md:pt-8 md:text-7xl">🔎</p>
         <h1 className="text-center text-lg font-bold md:text-2xl">検索結果</h1>
-        <div className="container mx-auto grid grid-cols-2 gap-2 py-8 md:grid-cols-4 md:gap-4">
+        <div className="container mx-auto grid grid-cols-2 gap-1 py-8 md:grid-cols-4 md:gap-4">
           {bookList &&
             bookList.map((book: Book, idx) => (
               <div key={idx}>
