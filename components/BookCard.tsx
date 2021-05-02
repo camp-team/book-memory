@@ -15,7 +15,6 @@ type Props = {
 export const BookCard = ({ bid, imgUrl, title, uid, isLibrary }: Props) => {
   // 「ライブラリ登録」Snackbar表示ステイト
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  console.log(isLibrary);
   // ライブラリ登録
   const addLibrary = () => {
     addBook(bid, title, imgUrl);

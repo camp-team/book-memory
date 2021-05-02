@@ -58,16 +58,15 @@ const LibraryMemory = ({
               value={input}
               wrap="hard"
               onChange={onChange}
-              className="ml-2 mr-6 p-1 rounded-md flex-1 resize-none focus:outline-none"
+              className="ml-2 mr-8 p-1 rounded-md flex-1 resize-none focus:outline-none"
             ></TextareaAutosize>
 
             <div className="ml-2 absolute bottom-0 right-0 ">
               <Tooltip title="登録" arrow>
                 <IconButton
                   className="focus:outline-none"
-                  size="small"
+                  size="medium"
                   style={input ? { color: 'limegreen' } : { color: 'gray' }}
-                  disabled={!input}
                   onClick={onClick}
                 >
                   <SendSharpIcon fontSize="default" />
