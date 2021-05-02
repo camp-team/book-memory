@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MemoryMoreVart from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
-import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
+import SendSharpIcon from '@material-ui/icons/SendSharp';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -54,22 +54,22 @@ const LibraryMemory = ({
           <>
             <TextareaAutosize
               rowsMin={2}
-              placeholder="入力する"
+              placeholder="メモを入力する"
               value={input}
               wrap="hard"
               onChange={onChange}
-              className="ml-2 mr-6 p-1 rounded-md flex-1 resize-none focus:outline-none"
+              className="ml-2 mr-8 p-1 rounded-md flex-1 resize-none focus:outline-none"
             ></TextareaAutosize>
 
             <div className="ml-2 absolute bottom-0 right-0 ">
               <Tooltip title="登録" arrow>
                 <IconButton
                   className="focus:outline-none"
-                  size="small"
-                  style={{ color: 'green' }}
+                  size="medium"
+                  style={input ? { color: 'limegreen' } : { color: 'gray' }}
                   onClick={onClick}
                 >
-                  <CheckOutlinedIcon fontSize="small" className="text-sm" />
+                  <SendSharpIcon fontSize="default" />
                 </IconButton>
               </Tooltip>
             </div>
