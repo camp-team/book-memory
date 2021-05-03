@@ -53,23 +53,20 @@ const IndexPage = () => {
               data-aos="fade-up"
               alt=""
             />
-
-            <div className="w-10 animate-pulse flex items-center">
-              <Image
-                src="/images/right-arrow.svg"
-                width={300}
-                height={300}
-                data-aos="fade-up"
-                data-aos-delay="600"
-                alt=""
-              />
-            </div>
+            <Image
+              src="/images/right-arrow.svg"
+              width={40}
+              height={40}
+              data-aos="fade-up"
+              data-aos-delay="700"
+              alt=""
+            />
             <Image
               src="/images/questions-yellowman.svg"
               width={250}
               height={250}
               data-aos="fade-up"
-              data-aos-delay="1500"
+              data-aos-delay="1400"
               alt=""
             />
           </div>
@@ -96,22 +93,20 @@ const IndexPage = () => {
               data-aos="fade-up"
               alt=""
             />
-            <div className="w-10 animate-pulse flex items-center">
-              <Image
-                src="/images/right-arrow.svg"
-                width={300}
-                height={300}
-                data-aos="fade-up"
-                data-aos-delay="600"
-                alt=""
-              />
-            </div>
+            <Image
+              src="/images/right-arrow.svg"
+              width={40}
+              height={40}
+              data-aos="fade-up"
+              data-aos-delay="700"
+              alt=""
+            />
             <Image
               src="/images/brain-blueman.svg"
               width={250}
               height={250}
               data-aos="fade-up"
-              data-aos-delay="1500"
+              data-aos-delay="1400"
               alt=""
             />
           </div>
