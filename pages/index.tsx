@@ -7,8 +7,8 @@ const IndexPage = () => {
   return (
     <Layout title="BookMemory">
       <section className="pt-10 pb-4 bg-blue-100">
-        <div className="container md:mx-auto md:flex md:justify-between">
-          <div className="my-8 w-full text-center md:mt-48">
+        <div className="container md:mx-auto md:flex md:justify-between md:items-center">
+          <div className="my-8 w-full text-center">
             <h1 className="text-4xl mb-2 font-semibold text-center tracking-wider">
               BookMemory
             </h1>

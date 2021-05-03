@@ -83,12 +83,10 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
       />
       <header className="fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30">
         <Link href="/">
-          <Image
+          <img
             src="/images/logo_BookMemory.png"
-            width={145}
-            height={22}
             alt=""
-            className="w-36 cursor-pointer"
+            className="w-36 h-6 cursor-pointer"
           />
         </Link>
         <form className="ml-4 items-center hidden w-1/2 sm:flex">
