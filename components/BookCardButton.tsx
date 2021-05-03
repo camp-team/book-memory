@@ -10,7 +10,7 @@ export const BookCardButton = ({ children, onClick }: Props) => (
     {children === '登録済み' ? (
       <button
         className={
-          'bg-gray-400 text-white font-bold p-2 text-xs rounded focus:outline-none'
+          'bg-gray-500 text-white font-bold p-2 text-xs rounded focus:outline-none'
         }
         onClick={onClick}
         disabled={true}

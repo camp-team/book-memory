@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,18 +6,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 type Props = {
   open: boolean;
-  onClickEditMemory: any;
-  onChangeEditMemory: any;
-  closeHandle: VoidFunction;
+  onClickEditMemory: (index: number) => void;
+  onChangeEditMemory: ChangeEventHandler<HTMLTextAreaElement>;
+  handleclose: VoidFunction;
   memoryIndex: number;
   editInput: string;
 };
 
-const EditMemoryDialog = ({
+export const EditMemoryDialog = ({
   open,
   onClickEditMemory,
   onChangeEditMemory,
-  closeHandle,
+  handleclose,
   editInput,
   memoryIndex,
 }: Props) => {
@@ -25,7 +25,7 @@ const EditMemoryDialog = ({
     <div>
       <Dialog
         open={open}
-        onClose={closeHandle}
+        onClose={handleclose}
         aria-labelledby="form-dialog-title"
         maxWidth="lg"
         scroll="body"
@@ -46,7 +46,7 @@ const EditMemoryDialog = ({
         </DialogContent>
         <DialogActions>
           <button
-            onClick={closeHandle}
+            onClick={handleclose}
             className="bg-gray-200 p-2 mr-1 rounded-md focus:outline-none"
           >
             キャンセル
@@ -64,4 +64,3 @@ const EditMemoryDialog = ({
     </div>
   );
 };
-export default EditMemoryDialog;

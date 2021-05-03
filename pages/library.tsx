@@ -1,30 +1,16 @@
 import Layout from '../components/Layout';
-import LibraryCard from '../components/LibraryCard';
-import React, { useState } from 'react';
+import { LibraryCard } from '../components/LibraryCard';
+import React from 'react';
 import { useCollection, useDocument } from '@nandorojo/swr-firestore';
 import { fuego } from '../utils/firebase';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { BookCount } from '../interfaces/Book';
 
 const limit = 10;
 
-// Snacbar表示用↓
-function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
 export default function Library() {
   //ユーザー取得
   const currentUser = fuego.auth().currentUser;
-
-  const [isSnackbarNoMoreBook, setIsSnackbarNoMoreBook] = useState(false);
-  const closeSnackbarNoMoreBook = () => {
-    setIsSnackbarNoMoreBook(false);
-  };
-  const openSnackbarNoMoreBook = () => {
-    setIsSnackbarNoMoreBook(true);
-  };
+  //ライブラリ登録カウント取得
   const { data: count }: BookCount = useDocument(`users/${currentUser?.uid}`, {
     listen: true,
   });
@@ -61,7 +47,6 @@ export default function Library() {
         );
         return docs;
       });
-    moreDocs.length || openSnackbarNoMoreBook();
     mutate((state) => [...state![Symbol.iterator](), ...moreDocs], false);
   };
   if (bookdata?.length === 0)
@@ -108,13 +93,6 @@ export default function Library() {
               </p>
             )}
           </div>
-          <Snackbar
-            open={isSnackbarNoMoreBook}
-            onClose={closeSnackbarNoMoreBook}
-            autoHideDuration={3000}
-          >
-            <Alert severity="error">これ以上はありません</Alert>
-          </Snackbar>
         </div>
       </div>
     </Layout>

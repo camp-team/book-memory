@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { deleteBook } from '../utils/book';
+import { SnackbarComponent } from './SnackbarComponent';
 
 type Props = {
   open: boolean;
-  onClickDeleteBook: any;
-  closeHandle: VoidFunction;
+  handleClose: VoidFunction;
   bid: string;
 };
 
-export default function DeleteBookDialog({
-  open,
-  onClickDeleteBook,
-  closeHandle,
-  bid,
-}: Props) {
+export const DeleteBookDialog = memo(({ open, handleClose, bid }: Props) => {
+  // Snackbar表示用（本削除）
+  const [openSnackbarDeleteBook, setOpenSnackbarDeleteBook] = useState(false);
+  // 本削除関数
+  const onClickDeleteBook = (index: string) => {
+    deleteBook(index);
+    setOpenSnackbarDeleteBook(true);
+  };
+
   return (
     <div>
       <Dialog
         open={open}
-        onClose={closeHandle}
+        onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -36,7 +40,7 @@ export default function DeleteBookDialog({
         </DialogContent>
         <DialogActions>
           <button
-            onClick={closeHandle}
+            onClick={handleClose}
             className="bg-gray-200 p-2 mr-1 rounded-md focus:outline-none "
           >
             キャンセル
@@ -44,7 +48,7 @@ export default function DeleteBookDialog({
           <button
             onClick={() => {
               onClickDeleteBook(bid);
-              closeHandle();
+              handleClose();
             }}
             className="bg-red-500 text-white p-2 mr-1 rounded-md "
           >
@@ -52,6 +56,14 @@ export default function DeleteBookDialog({
           </button>
         </DialogActions>
       </Dialog>
+      <SnackbarComponent
+        open={openSnackbarDeleteBook}
+        close={() => setOpenSnackbarDeleteBook(false)}
+        severity="info"
+        autoHideDuration={2000}
+      >
+        ライブラリから本を削除しました
+      </SnackbarComponent>
     </div>
   );
-}
+});

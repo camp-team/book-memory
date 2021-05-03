@@ -9,14 +9,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { addMemory } from '../utils/memory';
-import EditMemoryDialog from './EditMemoryDialog';
+import { EditMemoryDialog } from './EditMemoryDialog';
 import { useRouter } from 'next/router';
 
 type Props = {
   bid: string;
   memoryIndex: number;
   memories: string[];
-  onWelcomeUpdateMemory: any;
+  onWelcomeUpdateMemory: (text: string | string[]) => void;
 };
 
 const useStyles = makeStyles({
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MemoryMoreVert = ({
+export const MemoryMoreVart = ({
   bid,
   memoryIndex,
   memories,
@@ -34,9 +34,7 @@ const MemoryMoreVert = ({
   const router = useRouter();
   //　ーーーMoreVart用ーーー　//
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const onClickMoreVart = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+
   const closeMoreVart = () => {
     setAnchorEl(null);
   };
@@ -54,10 +52,7 @@ const MemoryMoreVert = ({
   };
   // 編集ダイアログの入力ステート
   const [editInput, setEditInput] = useState(memories[memoryIndex]);
-  // 編集ダイアログのメモリー入力中関数
-  const onChangeEditMemory: any = (event: ChangeEvent<HTMLInputElement>) => {
-    setEditInput(event.target.value);
-  };
+
   // メモリー更新関数
   const onClickEditMemory = (index: number) => {
     if (editInput === '') return;
@@ -84,7 +79,9 @@ const MemoryMoreVert = ({
         aria-label="more"
         aria-controls={'simple-memory' + memoryIndex}
         aria-haspopup="true"
-        onClick={onClickMoreVart}
+        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+          setAnchorEl(event.currentTarget);
+        }}
         className="opacity-0 group-hover:opacity-40 hover:bg-white hover:outline-none focus:outline-none"
         style={{ padding: 0 }}
       >
@@ -115,8 +112,10 @@ const MemoryMoreVert = ({
         <EditMemoryDialog
           open={editDialogopen}
           onClickEditMemory={onClickEditMemory}
-          onChangeEditMemory={onChangeEditMemory}
-          closeHandle={onClickDialogClose}
+          onChangeEditMemory={(event: ChangeEvent<HTMLTextAreaElement>) => {
+            setEditInput(event.target.value);
+          }}
+          handleclose={onClickDialogClose}
           editInput={editInput}
           memoryIndex={memoryIndex}
         />
@@ -124,4 +123,3 @@ const MemoryMoreVert = ({
     </div>
   );
 };
-export default MemoryMoreVert;

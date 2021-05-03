@@ -1,9 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import LibraryMemory from '../components/LibraryMemory';
-import BookMoreVert from './BookMoreVart';
+import React, { ChangeEvent, memo, useEffect, useState } from 'react';
+import { LibraryMemory } from '../components/LibraryMemory';
+import { BookMoreVert } from './BookMoreVart';
 import { addMemory, useMemory } from '../utils/memory';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { SnackbarComponent } from './SnackbarComponent';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -13,27 +12,15 @@ type Props = {
   title: string;
 };
 
-// Snacbar表示用↓
-function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
-const LibraryCard = ({ bid, imgUrl, title }: Props) => {
+export const LibraryCard = memo(({ bid, imgUrl, title }: Props) => {
   // Snackbar表示用（メモリー上限オーバーアラート）
   const router = useRouter();
   const [openSnackbarMemoryOver, setOpenSnackbarMemoryOver] = useState(false);
-  const closeSnackbarMemoryOver = () => {
-    setOpenSnackbarMemoryOver(false);
-  };
 
   //リアルタイムの本のメモリーを取得
   const memories = useMemory(bid);
   //入力メモリーのステイト
   const [input, setInput] = useState('');
-  //メモリー入力中関数
-  const onChangeInput: any = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput(event.target.value);
-  };
 
   // ウェルカムのサンプル用メモリー
   const [welcomeMemory, setWelcomeMemory] = useState([
@@ -57,7 +44,7 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
     ・人間には肉体、精神、知性、社会、情緒という5つの刃があり、これらを日頃からバランスよく磨いていくことが大切`,
   ]);
 
-  const onWelcomeUpdateMemory = (welcomeMemories: any) => {
+  const onWelcomeUpdateMemory = (welcomeMemories: string | string[]) => {
     setWelcomeMemory([...welcomeMemories]);
   };
 
@@ -71,12 +58,11 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
     if (router.pathname === '/library') {
-      memories.push(input);
+      memories && memories.push(input);
       addMemory(bid, memories);
     } else {
       onWelcomeUpdateMemory([...welcomeMemory, input]);
     }
-
     setInput('');
   };
 
@@ -104,20 +90,22 @@ const LibraryCard = ({ bid, imgUrl, title }: Props) => {
           <LibraryMemory
             bid={bid}
             input={input}
-            onChange={onChangeInput}
+            onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
+              setInput(event.target.value);
+            }}
             onClick={onClickMemoryAdd}
             onWelcomeUpdateMemory={onWelcomeUpdateMemory}
             memories={router.pathname === '/library' ? memories : welcomeMemory}
           />
         </ul>
       </form>
-
-      <Snackbar open={openSnackbarMemoryOver} onClose={closeSnackbarMemoryOver}>
-        <Alert severity="error">
-          １レコードの上限(1000文字)をオーバーしました
-        </Alert>
-      </Snackbar>
+      <SnackbarComponent
+        open={openSnackbarMemoryOver}
+        close={() => setOpenSnackbarMemoryOver(false)}
+        severity="error"
+      >
+        １レコードの上限(1000文字)をオーバーしました
+      </SnackbarComponent>
     </div>
   );
-};
-export default LibraryCard;
+});

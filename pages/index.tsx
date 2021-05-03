@@ -1,14 +1,14 @@
 import Layout from '../components/Layout';
 import LoginDialogButton from '../components/LoginDialogButton';
-import LibraryCard from '../components/LibraryCard';
+import { LibraryCard } from '../components/LibraryCard';
 import Image from 'next/image';
 
 const IndexPage = () => {
   return (
     <Layout title="BookMemory">
       <section className="pt-10 pb-4 bg-blue-100">
-        <div className="container md:mx-auto md:flex md:justify-between">
-          <div className="my-8 w-full text-center md:mt-48">
+        <div className="container md:mx-auto md:flex md:justify-between md:items-center">
+          <div className="my-8 w-full text-center">
             <h1 className="text-4xl mb-2 font-semibold text-center tracking-wider">
               BookMemory
             </h1>
@@ -53,23 +53,20 @@ const IndexPage = () => {
               data-aos="fade-up"
               alt=""
             />
-
-            <div className="w-10 animate-pulse flex items-center">
-              <Image
-                src="/images/right-arrow.svg"
-                width={300}
-                height={300}
-                data-aos="fade-up"
-                data-aos-delay="600"
-                alt=""
-              />
-            </div>
+            <Image
+              src="/images/right-arrow.svg"
+              width={40}
+              height={40}
+              data-aos="fade-up"
+              data-aos-delay="700"
+              alt=""
+            />
             <Image
               src="/images/questions-yellowman.svg"
               width={250}
               height={250}
               data-aos="fade-up"
-              data-aos-delay="1500"
+              data-aos-delay="1400"
               alt=""
             />
           </div>
@@ -96,22 +93,20 @@ const IndexPage = () => {
               data-aos="fade-up"
               alt=""
             />
-            <div className="w-10 animate-pulse flex items-center">
-              <Image
-                src="/images/right-arrow.svg"
-                width={300}
-                height={300}
-                data-aos="fade-up"
-                data-aos-delay="600"
-                alt=""
-              />
-            </div>
+            <Image
+              src="/images/right-arrow.svg"
+              width={40}
+              height={40}
+              data-aos="fade-up"
+              data-aos-delay="700"
+              alt=""
+            />
             <Image
               src="/images/brain-blueman.svg"
               width={250}
               height={250}
               data-aos="fade-up"
-              data-aos-delay="1500"
+              data-aos-delay="1400"
               alt=""
             />
           </div>
