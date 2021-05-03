@@ -26,7 +26,7 @@ export default function Search() {
   //本検索処理　ヘッダが検索される都度処理発生
   useEffect(() => {
     booktitle &&
-      searchBooks(booktitle).then((books: GoogleBook[] | undefined) => {
+      searchBooks(booktitle).then((books: GoogleBook[] | null) => {
         books && setBookList(books);
       });
   }, [booktitle]);
