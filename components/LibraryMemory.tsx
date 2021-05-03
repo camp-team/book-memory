@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler, useEffect, useState } from 'react';
-import MemoryMoreVart from './MemoryMoreVart';
+import { MemoryMoreVart } from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
