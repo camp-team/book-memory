@@ -1,10 +1,10 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
 
-export type Book = {
+export type GoogleBook = {
   bid: string;
   title: string;
-  imgUrl: string;
+  imageUrl: string;
 };
 
 export type BookCount = {

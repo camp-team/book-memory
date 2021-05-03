@@ -16,7 +16,7 @@ type Props = {
   bid: string;
   memoryIndex: number;
   memories: string[];
-  onWelcomeUpdateMemory: any;
+  onWelcomeUpdateMemory: (text: string | string[]) => void;
 };
 
 const useStyles = makeStyles({
@@ -112,7 +112,7 @@ export const MemoryMoreVart = ({
         <EditMemoryDialog
           open={editDialogopen}
           onClickEditMemory={onClickEditMemory}
-          onChangeEditMemory={(event: ChangeEvent<HTMLInputElement>) => {
+          onChangeEditMemory={(event: ChangeEvent<HTMLTextAreaElement>) => {
             setEditInput(event.target.value);
           }}
           handleclose={onClickDialogClose}

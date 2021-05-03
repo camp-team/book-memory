@@ -8,7 +8,7 @@ import { fuego } from '../utils/firebase';
 //Firebase上のメモリー監視用フック
 //変更があったタイミングで対象本のメモリーを返却
 export const useMemory = (id: string) => {
-  const [memories, setMemory] = useState<any>();
+  const [memories, setMemory] = useState<string[]>();
   const currentUser = fuego.auth().currentUser;
   useEffect(() => {
     const unsub = firebase

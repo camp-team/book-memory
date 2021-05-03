@@ -1,5 +1,5 @@
 import React, { ChangeEvent, memo, useEffect, useState } from 'react';
-import LibraryMemory from '../components/LibraryMemory';
+import { LibraryMemory } from '../components/LibraryMemory';
 import { BookMoreVert } from './BookMoreVart';
 import { addMemory, useMemory } from '../utils/memory';
 import { SnackbarComponent } from './SnackbarComponent';
@@ -58,7 +58,7 @@ export const LibraryCard = memo(({ bid, imgUrl, title }: Props) => {
   const onClickMemoryAdd: VoidFunction = () => {
     if (input === '') return;
     if (router.pathname === '/library') {
-      memories.push(input);
+      memories && memories.push(input);
       addMemory(bid, memories);
     } else {
       onWelcomeUpdateMemory([...welcomeMemory, input]);

@@ -10,11 +10,11 @@ type Props = {
   input: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   onClick: VoidFunction;
-  onWelcomeUpdateMemory: any;
+  onWelcomeUpdateMemory: (text: string | string[]) => void;
   memories?: string[];
 };
 
-const LibraryMemory = ({
+export const LibraryMemory = ({
   bid,
   input,
   onChange,
@@ -83,4 +83,3 @@ const LibraryMemory = ({
     </>
   );
 };
-export default LibraryMemory;
