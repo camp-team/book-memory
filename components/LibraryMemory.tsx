@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEventHandler, useEffect, useState } from 'react';
 import MemoryMoreVart from './MemoryMoreVart';
 import IconButton from '@material-ui/core/IconButton';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
@@ -8,7 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 type Props = {
   bid: string;
   input: string;
-  onChange: VoidFunction;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
   onClick: VoidFunction;
   onWelcomeUpdateMemory: any;
   memories?: string[];

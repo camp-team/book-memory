@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BookCardButton } from '../components/BookCardButton';
 import { addBook } from '../utils/book';
-
 import { SnackbarComponent } from './SnackbarComponent';
 
 type Props = {
@@ -45,6 +44,7 @@ export const BookCard = ({ bid, imgUrl, title, uid, isLibrary }: Props) => {
         open={openSnackbar}
         close={() => setOpenSnackbar(false)}
         severity="info"
+        autoHideDuration={2000}
       >
         ライブラリに登録しました
       </SnackbarComponent>
