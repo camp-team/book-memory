@@ -197,7 +197,7 @@ export default function Terms() {
 
   return (
     <Layout>
-      <div className="pt-20 px-4">
+      <div className="container mx-auto pt-20 px-4">
         <h1 className="text-2xl font-bold">利用規約</h1>
         <p className="py-8">
           この利用規約（以下「本規約」）は、本サービス運営者（以下「運営者」）がこのウェブサイト上で
