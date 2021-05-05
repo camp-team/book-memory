@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
-module.exports = {
+const withPWA = require('next-pwa');
+module.exports = withPWA({
   images: {
     domains: ['images-na.ssl-images-amazon.com', 'books.google.com'],
   },
@@ -13,4 +14,7 @@ module.exports = {
       },
     });
   },
-};
+  pwa: {
+    dest: 'public',
+  },
+});

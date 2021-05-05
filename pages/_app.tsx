@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { fuego } from '../utils/firebase';
@@ -19,9 +18,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <Head>
-        <link rel="shortcut icon" href="icons/favicon.ico" />
-      </Head>
       <FuegoProvider fuego={fuego}>
         <Component {...pageProps} />
       </FuegoProvider>

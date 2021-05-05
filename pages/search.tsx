@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import { BookCard } from '../components/BookCard';
 import { useRouter } from 'next/router';
 import { searchBooks } from '../utils/search-books';
