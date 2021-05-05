@@ -9,7 +9,8 @@ export const searchBooks = async (
   );
   if (!res) return null;
   const bookJson = await res.json();
-  const bookData: GoogleBook[] = bookJson.items.map((data: any) => {
+  if (!bookJson.items) return null;
+  const bookData: GoogleBook[] = await bookJson.items.map((data: any) => {
     const item = data.volumeInfo;
     const book: GoogleBook = {
       bid: data.id,

@@ -4,8 +4,8 @@ import React, {
   ChangeEvent,
   useEffect,
   KeyboardEvent,
+  memo,
 } from 'react';
-import Link from 'next/link';
 import LoginDialogButton from './LoginDialogButton';
 import { MenuVar } from './MenuVar';
 import { useRouter } from 'next/router';
@@ -19,15 +19,18 @@ type Props = {
   title?: string;
 };
 
-export const Header = ({ title = 'BookMemory' }: Props) => {
+export const Header = memo(({ title = 'BookMemory' }: Props) => {
   const router = useRouter();
   const [searchBarVisible, setSearchBarVisible] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [user, setuser] = useState<User | null | undefined>(undefined);
+
+  //ユーザーログイン検知
   useEffect(() => {
-    fuego.auth().onAuthStateChanged((authUser) => {
+    const unsub = fuego.auth().onAuthStateChanged((authUser) => {
       setuser(authUser);
     });
+    return unsub;
   }, [user]);
 
   //検索結果画面へ
@@ -82,14 +85,17 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
         }}
       />
       <header className="fixed top-0 -inset-x-0 bg-blue-600 p-2 px-4 flex justify-between items-center md:space-x-2 z-30">
-        <Link href="/">
-          <img
-            src="/images/logo_BookMemory.png"
-            alt=""
-            className="w-36 h-6 cursor-pointer"
-          />
-        </Link>
+        <Image
+          src="/images/logo_BookMemory.png"
+          width={145}
+          height={24}
+          alt=""
+          className="w-36 h-6 cursor-pointer"
+          onClick={() => router.push('/')}
+        />
+
         <form className="ml-4 items-center hidden w-1/2 sm:flex">
+          {/* PCサイズの検索欄 */}
           <input
             type="text"
             value={searchInput}
@@ -99,8 +105,10 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
             onKeyDown={(event) => onKeyDownSeach(event, searchInput)}
             className="md:w-11/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none"
             placeholder="本のタイトルを入力"
+            maxLength={50}
             autoComplete="on"
           />
+
           <a
             href="#"
             onClick={() => searchBook(searchInput)}
@@ -163,6 +171,7 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
                 className="w-5"
               />
             </a>
+            {/* スマホサイズの検索欄 */}
             <input
               type="text"
               className="ml-1 w-9/12 whitespace-nowrap px-2 py-2 border border-white rounded-l-md shadow-sm text-sm font-medium outline-none"
@@ -172,6 +181,7 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
                 setSearchInput(event.target.value);
               }}
               onKeyDown={(event) => onKeyDownSeach(event, searchInput)}
+              maxLength={50}
             />
             <a
               href="#"
@@ -194,4 +204,4 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
       )}
     </div>
   );
-};
+});
