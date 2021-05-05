@@ -154,7 +154,7 @@ export default function Terms() {
       contents: [
         {
           text:
-            '本ポリシーに関するお問い合わせは、下記”お問合せ”よりお願いいたします。',
+            '本ポリシーに関するお問い合わせは、下記(@welove_tk)よりダイレクトメールにてお願いいたします。',
         },
       ],
     },
@@ -162,7 +162,7 @@ export default function Terms() {
 
   return (
     <Layout>
-      <div className="pt-20 px-4">
+      <div className="container mx-auto pt-20 px-4">
         <h1 className="text-2xl font-bold">プライバシーポリシー</h1>
         <p className="py-8">
           本サービスは、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。

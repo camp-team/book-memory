@@ -63,13 +63,13 @@ export const Header = ({ title = 'BookMemory' }: Props) => {
           images: [
             {
               url: '/images/book-memory-ogp1.jpg',
-              width: 800,
-              height: 600,
+              width: 1200,
+              height: 630,
               alt: 'BookMemory',
             },
             {
               url: '/images/book-memory-ogp2.jpg',
-              width: 800,
+              width: 600,
               height: 600,
               alt: 'BookMemory',
             },

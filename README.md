@@ -1,8 +1,13 @@
-# TypeScript Next.js example
+# BookMemory
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+超シンプルな読書管理ツール
 
-## Deploy your own
+## 使用技術
+
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
 
 Deploy the example using [Vercel](https://vercel.com):
 
