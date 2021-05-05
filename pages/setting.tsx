@@ -1,7 +1,7 @@
 import { Layout } from '../components/Layout';
 import SettingComponent from '../components/SettingComponent';
 
-export default function Terms() {
+export default function Setting() {
   const settingContents = [
     {
       title: 'プロフィールの変更',

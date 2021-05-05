@@ -1,7 +1,7 @@
 import { Layout } from '../components/Layout';
 import TermsPrivacypolicy from '../components/TermsPrivacypolicy';
 
-export default function Terms() {
+export default function Privacypolicy() {
   const terms = [
     {
       title: '第1条（個人情報の収集方法）',
