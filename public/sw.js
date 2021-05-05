@@ -3,42 +3,42 @@ if (!self.define) {
       'require' !== e && (e += '.js');
       let s = Promise.resolve();
       return (
-        r[e] ||
+        n[e] ||
           (s = new Promise(async (s) => {
             if ('document' in self) {
-              const r = document.createElement('script');
-              (r.src = e), document.head.appendChild(r), (r.onload = s);
+              const n = document.createElement('script');
+              (n.src = e), document.head.appendChild(n), (n.onload = s);
             } else importScripts(e), s();
           })),
         s.then(() => {
-          if (!r[e]) throw new Error(`Module ${e} didn’t register its module`);
-          return r[e];
+          if (!n[e]) throw new Error(`Module ${e} didn’t register its module`);
+          return n[e];
         })
       );
     },
-    s = (s, r) => {
-      Promise.all(s.map(e)).then((e) => r(1 === e.length ? e[0] : e));
+    s = (s, n) => {
+      Promise.all(s.map(e)).then((e) => n(1 === e.length ? e[0] : e));
     },
-    r = { require: Promise.resolve(s) };
-  self.define = (s, i, a) => {
-    r[s] ||
-      (r[s] = Promise.resolve().then(() => {
-        let r = {};
-        const n = { uri: location.origin + s.slice(1) };
+    n = { require: Promise.resolve(s) };
+  self.define = (s, r, i) => {
+    n[s] ||
+      (n[s] = Promise.resolve().then(() => {
+        let n = {};
+        const a = { uri: location.origin + s.slice(1) };
         return Promise.all(
-          i.map((s) => {
+          r.map((s) => {
             switch (s) {
               case 'exports':
-                return r;
-              case 'module':
                 return n;
+              case 'module':
+                return a;
               default:
                 return e(s);
             }
           })
         ).then((e) => {
-          const s = a(...e);
-          return r.default || (r.default = s), r;
+          const s = i(...e);
+          return n.default || (n.default = s), n;
         });
       }));
   };
@@ -53,103 +53,103 @@ define('./sw.js', ['./workbox-ea903bce'], function (e) {
         {
           url:
             '/_next/static/chunks/0d34bbcf760083f8933f620e1e59619ac6d07133.2fdf3304c04999a93c34.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/484bcb1e.8e6d046056d960022fc6.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/52066749.00f7cb68a394ccf6e32f.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/64dba1ef.5cd02cf8b9b466254bdc.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url:
             '/_next/static/chunks/b36f0833dcb27f236d4872c3084c16912c8c2b4c.86d866854b81d85427e7.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url:
             '/_next/static/chunks/b444d84e76f83b423f3288dac5c61f51a20c6d36.2467aeb1cff676f04c4c.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/commons.444bfe66a2a2d6e0a387.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url:
             '/_next/static/chunks/d0069258034ea342f275c147281a0bdf3ac0220f.fc0d41b6da1e9cfced78.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/framework.8c52b5b4b899e1d1fad4.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/main-b90641496835dc538f6d.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/404-41dfa90df04c624cc4c7.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/_app-f20f8d28aaa6a67f341f.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/_error-39f9cb412aa1c6704d9b.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/index-6e302c118db98159c17b.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/library-57f21a5b2105853a324b.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url:
-            '/_next/static/chunks/pages/privacypolicy-f972a53f1e16f41ebaea.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+            '/_next/static/chunks/pages/privacypolicy-7d27e5b3b5cbfe410f91.js',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/search-9b11ad09844d136582ed.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
-          url: '/_next/static/chunks/pages/setting-d6629db117feb551dcdd.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          url: '/_next/static/chunks/pages/setting-5a4abdba90f17d8ff704.js',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/pages/terms-5553fde7f6a3f380ff30.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/polyfills-0365b576862b20e80554.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/chunks/webpack-245f049e565ebf942e09.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/_next/static/css/c6f87279a108523e215c.css',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
-          url: '/_next/static/e_PlFsVuwu1oZeyK6Pryl/_buildManifest.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          url: '/_next/static/tnoq4yJ2UbwIsvmF-DVQr/_buildManifest.js',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
-          url: '/_next/static/e_PlFsVuwu1oZeyK6Pryl/_ssgManifest.js',
-          revision: 'e_PlFsVuwu1oZeyK6Pryl',
+          url: '/_next/static/tnoq4yJ2UbwIsvmF-DVQr/_ssgManifest.js',
+          revision: 'tnoq4yJ2UbwIsvmF-DVQr',
         },
         {
           url: '/icons/android-chrome-128x128.png',
@@ -305,8 +305,8 @@ define('./sw.js', ['./workbox-ea903bce'], function (e) {
             cacheWillUpdate: async ({
               request: e,
               response: s,
-              event: r,
-              state: i,
+              event: n,
+              state: r,
             }) =>
               s && 'opaqueredirect' === s.type
                 ? new Response(s.body, {
