@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import LoginDialogButton from '../components/LoginDialogButton';
 import { LibraryCard } from '../components/LibraryCard';
 import Image from 'next/image';

@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import SettingComponent from '../components/SettingComponent';
 
 export default function Terms() {

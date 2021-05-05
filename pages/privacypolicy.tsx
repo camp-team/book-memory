@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import TermsPrivacypolicy from '../components/TermsPrivacypolicy';
 
 export default function Terms() {

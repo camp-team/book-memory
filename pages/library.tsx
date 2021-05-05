@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import { LibraryCard } from '../components/LibraryCard';
 import React from 'react';
 import { useCollection, useDocument } from '@nandorojo/swr-firestore';
